@@ -10,6 +10,12 @@ class LanguageLearningApp {
         this.synthesis = window.speechSynthesis;
         this.currentLanguage = 'spanish';
         
+        // Speech analysis tracking
+        this.speechStartTime = null;
+        this.speechEndTime = null;
+        this.interimResults = [];
+        this.expectedDuration = null;
+        
         // Language configurations
         this.languages = {
             spanish: {
@@ -54,9 +60,21 @@ class LanguageLearningApp {
         this.nextBtn = document.getElementById('next-btn');
         this.feedbackSection = document.getElementById('feedback-section');
         this.userTranscriptionEl = document.getElementById('user-transcription');
-        this.scorePercentageEl = document.getElementById('score-percentage');
-        this.scoreFillEl = document.getElementById('score-fill');
         this.errorMessageEl = document.getElementById('error-message');
+        
+        // Detailed feedback elements
+        this.wordAccuracyScoreEl = document.getElementById('word-accuracy-score');
+        this.wordAccuracyFillEl = document.getElementById('word-accuracy-fill');
+        this.wordAccuracyFeedbackEl = document.getElementById('word-accuracy-feedback');
+        this.timingScoreEl = document.getElementById('timing-score');
+        this.timingFillEl = document.getElementById('timing-fill');
+        this.timingFeedbackEl = document.getElementById('timing-feedback');
+        this.fluencyScoreEl = document.getElementById('fluency-score');
+        this.fluencyFillEl = document.getElementById('fluency-fill');
+        this.fluencyFeedbackEl = document.getElementById('fluency-feedback');
+        this.overallScoreEl = document.getElementById('overall-score');
+        this.overallScoreFillEl = document.getElementById('overall-score-fill');
+        this.overallFeedbackEl = document.getElementById('overall-feedback');
         
         // Initialize the app
         this.init();
@@ -141,19 +159,24 @@ class LanguageLearningApp {
         // Initialize Speech Recognition
         this.recognition = new SpeechRecognition();
         this.recognition.continuous = false;
-        this.recognition.interimResults = false;
+        this.recognition.interimResults = true; // Enable interim results for fluency analysis
         
         // Set up recognition event handlers
         this.recognition.onresult = (event) => {
-            const transcript = event.results[0][0].transcript;
-            this.handleSpeechResult(transcript);
+            this.processSpeechResults(event);
         };
         
         this.recognition.onerror = (event) => {
             this.handleSpeechError(event.error);
         };
         
+        this.recognition.onstart = () => {
+            this.speechStartTime = Date.now();
+            this.interimResults = [];
+        };
+        
         this.recognition.onend = () => {
+            this.speechEndTime = Date.now();
             this.stopRecording();
         };
     }
@@ -301,12 +324,40 @@ class LanguageLearningApp {
             this.feedbackSection.style.display = 'none';
             this.hideError();
             
+            // Calculate expected duration for current phrase
+            this.calculateExpectedDuration();
+            
+            // Reset timing variables
+            this.speechStartTime = null;
+            this.speechEndTime = null;
+            this.interimResults = [];
+            
             // Start speech recognition
             this.recognition.start();
             
         } catch (error) {
             this.handleSpeechError('Failed to start recording: ' + error.message);
         }
+    }
+    
+    calculateExpectedDuration() {
+        // Estimate expected duration based on phrase complexity
+        const phrase = this.phrases[this.currentPhraseIndex];
+        const config = this.languages[this.currentLanguage];
+        const text = phrase[config.phraseKey];
+        
+        // Count syllables (approximate)
+        const syllableCount = this.estimateSyllables(text);
+        
+        // Average speaking rate: 3-4 syllables per second for language learning
+        // Add buffer time for natural pauses
+        this.expectedDuration = (syllableCount / 3.5) * 1000 + 1000; // in milliseconds
+    }
+    
+    estimateSyllables(text) {
+        // Simple syllable estimation
+        const vowelGroups = text.toLowerCase().match(/[aeiouáéíóúàèìòùâêîôûäëïöü]+/g);
+        return vowelGroups ? vowelGroups.length : Math.max(1, text.split(' ').length);
     }
     
     stopRecording() {
@@ -319,17 +370,194 @@ class LanguageLearningApp {
         }
     }
     
-    handleSpeechResult(transcript) {
+    processSpeechResults(event) {
+        const currentTime = Date.now();
+        
+        // Track interim results for fluency analysis
+        for (let i = 0; i < event.results.length; i++) {
+            const result = event.results[i];
+            if (result.isFinal) {
+                // Final result - process the complete speech
+                const transcript = result[0].transcript;
+                this.handleFinalSpeechResult(transcript, currentTime);
+            } else {
+                // Interim result - track for fluency
+                this.interimResults.push({
+                    transcript: result[0].transcript,
+                    timestamp: currentTime
+                });
+            }
+        }
+    }
+    
+    handleFinalSpeechResult(transcript, endTime) {
         const phrase = this.phrases[this.currentPhraseIndex];
         const config = this.languages[this.currentLanguage];
         const originalPhrase = phrase[config.phraseKey];
-        const accuracy = this.calculateAccuracy(originalPhrase, transcript);
         
-        // Display results
-        this.showFeedback(transcript, accuracy);
+        // Calculate comprehensive speech analysis
+        const analysis = this.analyzeSpeech(originalPhrase, transcript, endTime);
+        
+        // Display detailed results
+        this.showDetailedFeedback(transcript, analysis);
         
         // Stop recording
         this.stopRecording();
+    }
+    
+    analyzeSpeech(original, spoken, endTime) {
+        // Calculate actual speech duration
+        const actualDuration = endTime - this.speechStartTime;
+        
+        // 1. Word Accuracy Analysis
+        const wordAccuracy = this.calculateWordAccuracy(original, spoken);
+        
+        // 2. Timing Analysis
+        const timingScore = this.calculateTimingScore(actualDuration);
+        
+        // 3. Fluency Analysis
+        const fluencyScore = this.calculateFluencyScore(actualDuration);
+        
+        // 4. Overall Score (weighted average)
+        const overallScore = Math.round(
+            (wordAccuracy.score * 0.6) + 
+            (timingScore.score * 0.2) + 
+            (fluencyScore.score * 0.2)
+        );
+        
+        return {
+            wordAccuracy,
+            timing: timingScore,
+            fluency: fluencyScore,
+            overall: overallScore,
+            duration: actualDuration,
+            expectedDuration: this.expectedDuration
+        };
+    }
+    
+    calculateWordAccuracy(original, spoken) {
+        const originalWords = this.normalizeText(original).split(' ').filter(w => w.length > 0);
+        const spokenWords = this.normalizeText(spoken).split(' ').filter(w => w.length > 0);
+        
+        let correctWords = 0;
+        let partialMatches = 0;
+        let details = [];
+        
+        // Analyze each expected word
+        for (let i = 0; i < originalWords.length; i++) {
+            const expectedWord = originalWords[i];
+            let bestMatch = { score: 0, word: '', status: 'missing' };
+            
+            // Find best match in spoken words
+            for (const spokenWord of spokenWords) {
+                const similarity = this.calculateWordSimilarity(expectedWord, spokenWord);
+                if (similarity > bestMatch.score) {
+                    bestMatch = { score: similarity, word: spokenWord, status: 'matched' };
+                }
+            }
+            
+            if (bestMatch.score >= 0.9) {
+                correctWords++;
+                details.push({ expected: expectedWord, actual: bestMatch.word, status: 'correct' });
+            } else if (bestMatch.score >= 0.6) {
+                partialMatches += 0.7;
+                details.push({ expected: expectedWord, actual: bestMatch.word, status: 'partial' });
+            } else {
+                details.push({ expected: expectedWord, actual: bestMatch.word || '', status: 'incorrect' });
+            }
+        }
+        
+        // Check for extra words
+        const extraWords = Math.max(0, spokenWords.length - originalWords.length);
+        
+        const rawScore = (correctWords + partialMatches) / originalWords.length;
+        const score = Math.max(0, Math.min(100, Math.round(rawScore * 100) - (extraWords * 5)));
+        
+        return {
+            score,
+            correctWords,
+            totalWords: originalWords.length,
+            extraWords,
+            details,
+            feedback: this.generateWordFeedback(correctWords, originalWords.length, extraWords)
+        };
+    }
+    
+    calculateTimingScore(actualDuration) {
+        const ratio = actualDuration / this.expectedDuration;
+        let score = 100;
+        let feedback = '';
+        
+        if (ratio < 0.7) {
+            // Too fast
+            score = Math.max(60, 100 - ((0.7 - ratio) * 200));
+            feedback = 'Try speaking a bit slower for clearer pronunciation';
+        } else if (ratio > 2.0) {
+            // Too slow
+            score = Math.max(60, 100 - ((ratio - 2.0) * 150));
+            feedback = 'Try to speak more fluently with fewer pauses';
+        } else if (ratio > 1.5) {
+            // Slightly slow
+            score = Math.max(80, 100 - ((ratio - 1.5) * 80));
+            feedback = 'Good pace, try to be a bit more natural';
+        } else {
+            // Good timing
+            feedback = 'Great speaking pace!';
+        }
+        
+        return {
+            score: Math.round(score),
+            actualDuration,
+            expectedDuration: this.expectedDuration,
+            ratio,
+            feedback
+        };
+    }
+    
+    calculateFluencyScore(actualDuration) {
+        // Analyze fluency based on interim results and total duration
+        let score = 100;
+        let feedback = 'Smooth and fluent delivery!';
+        
+        // Simple fluency estimation based on speech pattern
+        const wordsPerSecond = this.interimResults.length / (actualDuration / 1000);
+        
+        if (this.interimResults.length < 2) {
+            // Very few interim results suggest either very fast or very hesitant speech
+            if (actualDuration < this.expectedDuration * 0.8) {
+                score = 85;
+                feedback = 'Good speed, work on clarity';
+            } else {
+                score = 70;
+                feedback = 'Try to speak more continuously';
+            }
+        } else if (wordsPerSecond > 5) {
+            score = 75;
+            feedback = 'Good fluency, try speaking slightly slower';
+        } else if (wordsPerSecond < 1) {
+            score = 65;
+            feedback = 'Work on speaking more fluently with fewer pauses';
+        }
+        
+        return {
+            score: Math.round(score),
+            wordsPerSecond: Math.round(wordsPerSecond * 10) / 10,
+            feedback
+        };
+    }
+    
+    generateWordFeedback(correct, total, extra) {
+        const percentage = Math.round((correct / total) * 100);
+        
+        if (percentage >= 90) {
+            return 'Excellent word accuracy!';
+        } else if (percentage >= 75) {
+            return 'Good pronunciation, keep practicing!';
+        } else if (percentage >= 60) {
+            return 'Getting better, focus on unclear words';
+        } else {
+            return 'Keep practicing, you\'re improving!';
+        }
     }
     
     handleSpeechError(error) {
@@ -356,73 +584,7 @@ class LanguageLearningApp {
         this.showError(errorMessage);
     }
     
-    calculateAccuracy(original, spoken) {
-        // Very forgiving accuracy calculation optimized for natural speech patterns
-        const normalizedOriginal = this.normalizeText(original);
-        const normalizedSpoken = this.normalizeText(spoken);
-        
-        if (normalizedOriginal === normalizedSpoken) return 100;
-        
-        // Split into words for word-based comparison
-        const originalWords = normalizedOriginal.split(' ').filter(w => w.length > 0);
-        const spokenWords = normalizedSpoken.split(' ').filter(w => w.length > 0);
-        
-        if (originalWords.length === 0) return 100;
-        
-        // Check for key content words (ignore small function words that are often misheard)
-        const keyWords = originalWords.filter(word => word.length > 2 || this.isImportantShortWord(word));
-        const wordsToScore = keyWords.length > 0 ? keyWords : originalWords;
-        
-        // Calculate word-level accuracy with very generous scoring
-        let correctWords = 0;
-        let partialMatches = 0;
-        
-        for (const originalWord of wordsToScore) {
-            let bestMatch = 0;
-            
-            // Check for exact or close matches in spoken words
-            for (const spokenWord of spokenWords) {
-                if (originalWord === spokenWord) {
-                    bestMatch = 1; // Perfect match
-                    break;
-                } else {
-                    // Calculate similarity for partial credit
-                    const similarity = this.calculateWordSimilarity(originalWord, spokenWord);
-                    bestMatch = Math.max(bestMatch, similarity);
-                }
-            }
-            
-            // Much more generous thresholds for natural speech
-            if (bestMatch >= 0.8) {
-                correctWords += 1;
-            } else if (bestMatch >= 0.5) {
-                partialMatches += 0.8; // High partial credit for reasonable attempts
-            } else if (bestMatch >= 0.3) {
-                partialMatches += 0.5; // Some credit for recognizable attempts
-            }
-        }
-        
-        // Calculate base score
-        const rawScore = (correctWords + partialMatches) / wordsToScore.length;
-        let finalScore = Math.round(rawScore * 100);
-        
-        // Additional bonuses for speech recognition challenges
-        const lengthBonus = this.calculateLengthBonus(originalWords.length);
-        const speechPatternBonus = this.calculateSpeechPatternBonus(normalizedOriginal, normalizedSpoken);
-        
-        finalScore += lengthBonus + speechPatternBonus;
-        
-        // Apply generous learning-friendly adjustments
-        if (finalScore >= 80) finalScore = Math.min(100, finalScore + 8); // Big boost for good attempts
-        if (finalScore >= 65) finalScore = Math.min(100, finalScore + 10); // Major encouragement
-        if (finalScore >= 45) finalScore = Math.min(100, finalScore + 8); // Support learning efforts
-        if (finalScore >= 30) finalScore = Math.min(100, finalScore + 5); // Encourage any attempt
-        
-        // Very generous minimum score for any reasonable attempt
-        if (finalScore > 0 && finalScore < 40) finalScore = 40;
-        
-        return Math.max(0, Math.min(100, finalScore));
-    }
+
     
     isImportantShortWord(word) {
         // Short words that are crucial for meaning in the supported languages
@@ -618,35 +780,61 @@ class LanguageLearningApp {
         return matrix[str2.length][str1.length];
     }
     
-    showFeedback(transcript, accuracy) {
+    showDetailedFeedback(transcript, analysis) {
+        // Display what the user said
         this.userTranscriptionEl.textContent = transcript;
-        this.scorePercentageEl.textContent = accuracy + '%';
         
-        // Add encouraging feedback message
-        let message = '';
-        if (accuracy >= 90) {
-            message = ' - Excellent pronunciation! 🌟';
-        } else if (accuracy >= 80) {
-            message = ' - Great job! 👍';
-        } else if (accuracy >= 70) {
-            message = ' - Good effort! Keep practicing! 👏';
-        } else if (accuracy >= 60) {
-            message = ' - Nice try! You\'re improving! 💪';
-        } else if (accuracy >= 40) {
-            message = ' - Keep practicing, you\'re getting there! 📈';
-        } else {
-            message = ' - Don\'t give up! Practice makes perfect! 🎯';
-        }
+        // Update word accuracy
+        this.wordAccuracyScoreEl.textContent = analysis.wordAccuracy.score + '%';
+        this.wordAccuracyFeedbackEl.textContent = analysis.wordAccuracy.feedback;
         
-        this.scorePercentageEl.textContent = accuracy + '%' + message;
+        // Update timing
+        this.timingScoreEl.textContent = analysis.timing.score + '%';
+        this.timingFeedbackEl.textContent = analysis.timing.feedback;
         
-        // Animate score bar
+        // Update fluency
+        this.fluencyScoreEl.textContent = analysis.fluency.score + '%';
+        this.fluencyFeedbackEl.textContent = analysis.fluency.feedback;
+        
+        // Update overall score
+        this.overallScoreEl.textContent = analysis.overall + '%';
+        this.overallFeedbackEl.textContent = this.generateOverallFeedback(analysis.overall);
+        
+        // Animate all progress bars with staggered timing
         setTimeout(() => {
-            this.scoreFillEl.style.width = accuracy + '%';
-        }, 100);
+            this.wordAccuracyFillEl.style.width = analysis.wordAccuracy.score + '%';
+        }, 200);
+        
+        setTimeout(() => {
+            this.timingFillEl.style.width = analysis.timing.score + '%';
+        }, 400);
+        
+        setTimeout(() => {
+            this.fluencyFillEl.style.width = analysis.fluency.score + '%';
+        }, 600);
+        
+        setTimeout(() => {
+            this.overallScoreFillEl.style.width = analysis.overall + '%';
+        }, 800);
         
         // Show feedback section
         this.feedbackSection.style.display = 'block';
+    }
+    
+    generateOverallFeedback(score) {
+        if (score >= 95) {
+            return 'Outstanding! Your pronunciation is excellent!';
+        } else if (score >= 85) {
+            return 'Excellent work! You\'re speaking very well!';
+        } else if (score >= 75) {
+            return 'Great job! Keep up the good practice!';
+        } else if (score >= 65) {
+            return 'Good effort! You\'re making solid progress!';
+        } else if (score >= 50) {
+            return 'Nice try! Focus on the areas that need work!';
+        } else {
+            return 'Keep practicing! Every attempt helps you improve!';
+        }
     }
     
     nextPhrase() {

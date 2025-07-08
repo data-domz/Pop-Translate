@@ -57,13 +57,53 @@
                     <p id="user-transcription"></p>
                 </div>
                 
-                <div class="accuracy-score">
-                    <h3>Accuracy Score:</h3>
-                    <div class="score-display">
-                        <span id="score-percentage">0%</span>
-                        <div class="score-bar">
-                            <div class="score-fill" id="score-fill"></div>
+                <div class="speech-analysis">
+                    <h3>Speech Analysis:</h3>
+                    
+                    <div class="analysis-grid">
+                        <div class="analysis-item">
+                            <div class="analysis-header">
+                                <span class="analysis-label">Word Accuracy</span>
+                                <span class="analysis-score" id="word-accuracy-score">0%</span>
+                            </div>
+                            <div class="analysis-bar">
+                                <div class="analysis-fill" id="word-accuracy-fill"></div>
+                            </div>
+                            <p class="analysis-feedback" id="word-accuracy-feedback"></p>
                         </div>
+                        
+                        <div class="analysis-item">
+                            <div class="analysis-header">
+                                <span class="analysis-label">Timing</span>
+                                <span class="analysis-score" id="timing-score">0%</span>
+                            </div>
+                            <div class="analysis-bar">
+                                <div class="analysis-fill" id="timing-fill"></div>
+                            </div>
+                            <p class="analysis-feedback" id="timing-feedback"></p>
+                        </div>
+                        
+                        <div class="analysis-item">
+                            <div class="analysis-header">
+                                <span class="analysis-label">Fluency</span>
+                                <span class="analysis-score" id="fluency-score">0%</span>
+                            </div>
+                            <div class="analysis-bar">
+                                <div class="analysis-fill" id="fluency-fill"></div>
+                            </div>
+                            <p class="analysis-feedback" id="fluency-feedback"></p>
+                        </div>
+                    </div>
+                    
+                    <div class="overall-score">
+                        <h4>Overall Score:</h4>
+                        <div class="overall-score-display">
+                            <span class="overall-score-number" id="overall-score">0%</span>
+                            <div class="overall-score-bar">
+                                <div class="overall-score-fill" id="overall-score-fill"></div>
+                            </div>
+                        </div>
+                        <p class="overall-feedback" id="overall-feedback"></p>
                     </div>
                 </div>
             </div>
