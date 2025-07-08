@@ -1,0 +1,24 @@
+{
+    "phrases": [
+        {
+            "french": "Bonjour, comment allez-vous ?",
+            "english": "Hello, how are you?"
+        },
+        {
+            "french": "Je m'appelle Marie",
+            "english": "My name is Marie"
+        },
+        {
+            "french": "Où sont les toilettes ?",
+            "english": "Where is the bathroom?"
+        },
+        {
+            "french": "Merci beaucoup",
+            "english": "Thank you very much"
+        },
+        {
+            "french": "Je ne parle pas français très bien",
+            "english": "I don't speak French very well"
+        }
+    ]
+}

@@ -1,8 +1,8 @@
-# Spanish Learning App
+# Multi-Language Learning App
 
 ## Overview
 
-This is a browser-based Spanish pronunciation learning application that helps users practice Spanish phrases through interactive speech recognition and synthesis. The app presents Spanish phrases with English translations, allows users to hear the correct pronunciation, record their own pronunciation attempts, and provides feedback on their performance.
+This is a browser-based multi-language pronunciation learning application that helps users practice phrases in Spanish, French, and German through interactive speech recognition and synthesis. The app features a modern, professional design with a language selector dropdown, presents phrases with English translations, allows users to hear the correct pronunciation, record their own pronunciation attempts, and provides feedback on their performance.
 
 ## System Architecture
 
@@ -21,29 +21,39 @@ This is a browser-based Spanish pronunciation learning application that helps us
 
 ## Key Components
 
-### 1. Spanish Learning App Class (`SpanishLearningApp`)
-- **Purpose**: Main application controller managing all functionality
+### 1. Language Learning App Class (`LanguageLearningApp`)
+- **Purpose**: Main application controller managing all functionality for multiple languages
 - **Responsibilities**: 
-  - State management (phrases, current index, recording status)
+  - Multi-language state management (phrases, current index, recording status, language selection)
   - DOM manipulation and event handling
-  - Speech recognition and synthesis coordination
+  - Speech recognition and synthesis coordination with language-specific configurations
   - User feedback and scoring
+  - Language switching and configuration management
 
 ### 2. Speech Integration
 - **Speech Recognition**: Uses browser's `webkitSpeechRecognition` or `SpeechRecognition`
 - **Speech Synthesis**: Uses `window.speechSynthesis` for pronunciation playback
-- **Language Support**: Configured for Spanish (es-ES) recognition and synthesis
+- **Language Support**: Configured for multiple languages:
+  - Spanish: es-MX (Mexican Spanish preferred) with es-ES fallback
+  - French: fr-FR
+  - German: de-DE
+- **Voice Selection**: Intelligent voice selection with preferences for regional variants
 
 ### 3. Data Management
-- **Static JSON**: Phrases stored in `data/spanish.json`
+- **Static JSON**: Phrases stored in language-specific files:
+  - `data/spanish.json` - Spanish phrases with English translations
+  - `data/french.json` - French phrases with English translations
+  - `data/german.json` - German phrases with English translations
 - **In-memory storage**: No persistent user data or progress tracking
-- **Data structure**: Simple array of phrase objects with Spanish and English properties
+- **Data structure**: Simple array of phrase objects with target language and English properties
 
 ### 4. User Interface Components
-- **Phrase Display**: Shows current Spanish phrase with English translation
+- **Language Selector**: Dropdown to choose between Spanish, French, and German
+- **Phrase Display**: Shows current phrase in selected language with English translation
 - **Control Buttons**: Play audio, record speech, navigate to next phrase
 - **Feedback System**: Displays transcription results and pronunciation scoring
 - **Progress Indicator**: Shows current phrase position in sequence
+- **Modern Design**: Clean, professional interface with gradient backgrounds, soft shadows, and smooth animations
 
 ## Data Flow
 
@@ -96,7 +106,18 @@ This is a browser-based Spanish pronunciation learning application that helps us
 
 ## Changelog
 
-- July 08, 2025. Initial setup
+- July 08, 2025. Initial Spanish learning app setup
+- July 08, 2025. Enhanced visual design with modern CSS:
+  - Improved typography with Inter font stack
+  - Enhanced shadows and gradients
+  - Better responsive design for mobile devices
+  - Animated button effects and transitions
+- July 08, 2025. Added multi-language support:
+  - Language selector dropdown for Spanish, French, and German
+  - Dynamic phrase loading from language-specific JSON files
+  - Intelligent voice selection with Mexican Spanish preference
+  - Language-specific speech recognition configuration
+  - Updated UI to dynamically change based on selected language
 
 ## User Preferences
 

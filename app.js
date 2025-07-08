@@ -1,6 +1,6 @@
-// Spanish Learning App - Main JavaScript File
+// Multi-Language Learning App - Main JavaScript File
 
-class SpanishLearningApp {
+class LanguageLearningApp {
     constructor() {
         // App state
         this.phrases = [];
@@ -8,9 +8,44 @@ class SpanishLearningApp {
         this.isRecording = false;
         this.recognition = null;
         this.synthesis = window.speechSynthesis;
+        this.currentLanguage = 'spanish';
+        
+        // Language configurations
+        this.languages = {
+            spanish: {
+                name: 'Spanish',
+                flag: '🇪🇸',
+                dataFile: 'data/spanish.json',
+                phraseKey: 'spanish',
+                ttsLang: 'es-MX', // Mexican Spanish preferred
+                recognitionLang: 'es-MX',
+                fallbackTts: 'es-ES'
+            },
+            french: {
+                name: 'French',
+                flag: '🇫🇷',
+                dataFile: 'data/french.json',
+                phraseKey: 'french',
+                ttsLang: 'fr-FR',
+                recognitionLang: 'fr-FR',
+                fallbackTts: 'fr-FR'
+            },
+            german: {
+                name: 'German',
+                flag: '🇩🇪',
+                dataFile: 'data/german.json',
+                phraseKey: 'german',
+                ttsLang: 'de-DE',
+                recognitionLang: 'de-DE',
+                fallbackTts: 'de-DE'
+            }
+        };
         
         // DOM elements
-        this.spanishPhraseEl = document.getElementById('spanish-phrase');
+        this.languageSelect = document.getElementById('language-select');
+        this.appTitle = document.getElementById('app-title');
+        this.appDescription = document.getElementById('app-description');
+        this.phraseEl = document.getElementById('spanish-phrase');
         this.englishTranslationEl = document.getElementById('english-translation');
         this.currentPhraseEl = document.getElementById('current-phrase');
         this.totalPhrasesEl = document.getElementById('total-phrases');
@@ -29,14 +64,33 @@ class SpanishLearningApp {
     
     async init() {
         try {
-            // Load Spanish phrases from JSON file
-            await this.loadPhrases();
+            // Set up event listeners first
+            this.setupEventListeners();
+            
+            // Load phrases for default language
+            await this.loadLanguage(this.currentLanguage);
             
             // Check browser compatibility
             this.checkBrowserSupport();
             
-            // Set up event listeners
-            this.setupEventListeners();
+        } catch (error) {
+            this.showError('Failed to initialize the app: ' + error.message);
+        }
+    }
+    
+    async loadLanguage(languageKey) {
+        try {
+            this.currentLanguage = languageKey;
+            const config = this.languages[languageKey];
+            
+            // Load phrases from JSON file
+            await this.loadPhrases(config.dataFile);
+            
+            // Update UI for new language
+            this.updateLanguageUI(config);
+            
+            // Reset phrase index
+            this.currentPhraseIndex = 0;
             
             // Display first phrase
             this.displayCurrentPhrase();
@@ -44,14 +98,23 @@ class SpanishLearningApp {
             // Update UI
             this.updateUI();
             
+            // Update speech recognition language
+            this.updateSpeechRecognition();
+            
         } catch (error) {
-            this.showError('Failed to initialize the app: ' + error.message);
+            this.showError('Failed to load language: ' + error.message);
         }
     }
     
-    async loadPhrases() {
+    updateLanguageUI(config) {
+        this.appTitle.textContent = `${config.flag} ${config.name} Learning App`;
+        this.appDescription.textContent = `Practice your ${config.name} pronunciation`;
+        document.title = `${config.name} Language Learning App`;
+    }
+    
+    async loadPhrases(dataFile) {
         try {
-            const response = await fetch('data/spanish.json');
+            const response = await fetch(dataFile);
             if (!response.ok) {
                 throw new Error('Failed to load phrases data');
             }
@@ -59,7 +122,7 @@ class SpanishLearningApp {
             this.phrases = data.phrases;
             this.totalPhrasesEl.textContent = this.phrases.length;
         } catch (error) {
-            throw new Error('Could not load Spanish phrases: ' + error.message);
+            throw new Error('Could not load phrases: ' + error.message);
         }
     }
     
@@ -79,7 +142,6 @@ class SpanishLearningApp {
         this.recognition = new SpeechRecognition();
         this.recognition.continuous = false;
         this.recognition.interimResults = false;
-        this.recognition.lang = 'es-ES'; // Spanish (Spain)
         
         // Set up recognition event handlers
         this.recognition.onresult = (event) => {
@@ -96,17 +158,49 @@ class SpanishLearningApp {
         };
     }
     
+    updateSpeechRecognition() {
+        if (this.recognition) {
+            const config = this.languages[this.currentLanguage];
+            this.recognition.lang = config.recognitionLang;
+        }
+    }
+    
     setupEventListeners() {
         this.playBtn.addEventListener('click', () => this.playCurrentPhrase());
         this.recordBtn.addEventListener('click', () => this.toggleRecording());
         this.nextBtn.addEventListener('click', () => this.nextPhrase());
+        this.languageSelect.addEventListener('change', (e) => this.handleLanguageChange(e.target.value));
+    }
+    
+    async handleLanguageChange(languageKey) {
+        try {
+            // Hide feedback and error messages
+            this.feedbackSection.style.display = 'none';
+            this.hideError();
+            
+            // Stop any ongoing recording
+            if (this.isRecording) {
+                this.stopRecording();
+            }
+            
+            // Cancel any ongoing speech
+            this.synthesis.cancel();
+            
+            // Load new language
+            await this.loadLanguage(languageKey);
+            
+        } catch (error) {
+            this.showError('Failed to switch language: ' + error.message);
+        }
     }
     
     displayCurrentPhrase() {
         if (this.phrases.length === 0) return;
         
         const phrase = this.phrases[this.currentPhraseIndex];
-        this.spanishPhraseEl.textContent = phrase.spanish;
+        const config = this.languages[this.currentLanguage];
+        
+        this.phraseEl.textContent = phrase[config.phraseKey];
         this.englishTranslationEl.textContent = phrase.english;
         this.currentPhraseEl.textContent = this.currentPhraseIndex + 1;
         
@@ -121,19 +215,18 @@ class SpanishLearningApp {
         this.synthesis.cancel();
         
         const phrase = this.phrases[this.currentPhraseIndex];
-        const utterance = new SpeechSynthesisUtterance(phrase.spanish);
+        const config = this.languages[this.currentLanguage];
+        const text = phrase[config.phraseKey];
         
-        // Set Spanish voice if available
-        const voices = this.synthesis.getVoices();
-        const spanishVoice = voices.find(voice => 
-            voice.lang.startsWith('es') || voice.lang.includes('Spanish')
-        );
+        const utterance = new SpeechSynthesisUtterance(text);
         
-        if (spanishVoice) {
-            utterance.voice = spanishVoice;
+        // Find appropriate voice for the language
+        const voice = this.findBestVoice(config);
+        if (voice) {
+            utterance.voice = voice;
         }
         
-        utterance.lang = 'es-ES';
+        utterance.lang = config.ttsLang;
         utterance.rate = 0.8; // Slightly slower for learning
         utterance.pitch = 1.0;
         
@@ -153,6 +246,41 @@ class SpanishLearningApp {
         };
         
         this.synthesis.speak(utterance);
+    }
+    
+    findBestVoice(config) {
+        const voices = this.synthesis.getVoices();
+        
+        // For Spanish, prefer Mexican Spanish (es-MX)
+        if (config.ttsLang === 'es-MX') {
+            // First try to find exact es-MX voice
+            let voice = voices.find(v => v.lang === 'es-MX');
+            if (voice) return voice;
+            
+            // Try to find voice with Mexico or Latin American in name
+            voice = voices.find(v => 
+                v.name.toLowerCase().includes('mexico') || 
+                v.name.toLowerCase().includes('mexican') ||
+                v.name.toLowerCase().includes('latin')
+            );
+            if (voice) return voice;
+            
+            // Fallback to any Spanish voice
+            voice = voices.find(v => v.lang.startsWith('es-'));
+            if (voice) return voice;
+        }
+        
+        // For other languages, find exact match first
+        let voice = voices.find(v => v.lang === config.ttsLang);
+        if (voice) return voice;
+        
+        // Fallback to language code match
+        const langCode = config.ttsLang.split('-')[0];
+        voice = voices.find(v => v.lang.startsWith(langCode));
+        if (voice) return voice;
+        
+        // Final fallback
+        return voices.find(v => v.lang === config.fallbackTts);
     }
     
     toggleRecording() {
@@ -192,7 +320,9 @@ class SpanishLearningApp {
     }
     
     handleSpeechResult(transcript) {
-        const originalPhrase = this.phrases[this.currentPhraseIndex].spanish;
+        const phrase = this.phrases[this.currentPhraseIndex];
+        const config = this.languages[this.currentLanguage];
+        const originalPhrase = phrase[config.phraseKey];
         const accuracy = this.calculateAccuracy(originalPhrase, transcript);
         
         // Display results
@@ -321,7 +451,7 @@ class SpanishLearningApp {
 
 // Initialize the app when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new SpanishLearningApp();
+    new LanguageLearningApp();
 });
 
 // Handle voices loading for better browser compatibility

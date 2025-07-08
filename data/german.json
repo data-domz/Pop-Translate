@@ -1,0 +1,24 @@
+{
+    "phrases": [
+        {
+            "german": "Hallo, wie geht es Ihnen?",
+            "english": "Hello, how are you?"
+        },
+        {
+            "german": "Ich heiße Maria",
+            "english": "My name is Maria"
+        },
+        {
+            "german": "Wo ist die Toilette?",
+            "english": "Where is the bathroom?"
+        },
+        {
+            "german": "Vielen Dank für Ihre Hilfe",
+            "english": "Thank you very much for your help"
+        },
+        {
+            "german": "Ich spreche nicht sehr gut Deutsch",
+            "english": "I don't speak German very well"
+        }
+    ]
+}
