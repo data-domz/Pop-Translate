@@ -124,6 +124,13 @@ This is a browser-based multi-language pronunciation learning application that h
   - Provides partial credit for close attempts
   - Learning-friendly score adjustments and encouraging feedback messages
   - Minimum score thresholds to maintain student motivation
+- July 08, 2025. Enhanced scoring for natural speech patterns:
+  - Optimized for fast/natural speech vs slow/deliberate speech
+  - Focuses on key content words, ignores function word errors
+  - Adds length and speech pattern bonuses for complex phrases
+  - Includes phonetic similarity matching for common mispronunciations
+  - Handles specific speech recognition errors like "bano"/"albano"
+  - Very generous minimum scores (40%+) to encourage continued practice
 
 ## User Preferences
 
