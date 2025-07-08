@@ -118,6 +118,12 @@ This is a browser-based multi-language pronunciation learning application that h
   - Intelligent voice selection with Mexican Spanish preference
   - Language-specific speech recognition configuration
   - Updated UI to dynamically change based on selected language
+- July 08, 2025. Improved accuracy scoring algorithm:
+  - More forgiving word-based accuracy calculation instead of strict character matching
+  - Handles common pronunciation variations and speech recognition errors
+  - Provides partial credit for close attempts
+  - Learning-friendly score adjustments and encouraging feedback messages
+  - Minimum score thresholds to maintain student motivation
 
 ## User Preferences
 

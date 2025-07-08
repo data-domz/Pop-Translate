@@ -357,17 +357,113 @@ class LanguageLearningApp {
     }
     
     calculateAccuracy(original, spoken) {
-        // Simple similarity calculation using Levenshtein distance
+        // More forgiving accuracy calculation for language learning
         const normalizedOriginal = this.normalizeText(original);
         const normalizedSpoken = this.normalizeText(spoken);
         
-        const maxLength = Math.max(normalizedOriginal.length, normalizedSpoken.length);
-        if (maxLength === 0) return 100;
+        if (normalizedOriginal === normalizedSpoken) return 100;
         
-        const distance = this.levenshteinDistance(normalizedOriginal, normalizedSpoken);
-        const accuracy = Math.max(0, Math.round(((maxLength - distance) / maxLength) * 100));
+        // Split into words for word-based comparison
+        const originalWords = normalizedOriginal.split(' ').filter(w => w.length > 0);
+        const spokenWords = normalizedSpoken.split(' ').filter(w => w.length > 0);
         
-        return accuracy;
+        if (originalWords.length === 0) return 100;
+        
+        // Calculate word-level accuracy (more forgiving than character-level)
+        let correctWords = 0;
+        let partialMatches = 0;
+        
+        for (let i = 0; i < originalWords.length; i++) {
+            const originalWord = originalWords[i];
+            let bestMatch = 0;
+            
+            // Check for exact or close matches in spoken words
+            for (const spokenWord of spokenWords) {
+                if (originalWord === spokenWord) {
+                    bestMatch = 1; // Perfect match
+                    break;
+                } else {
+                    // Calculate similarity for partial credit
+                    const similarity = this.calculateWordSimilarity(originalWord, spokenWord);
+                    bestMatch = Math.max(bestMatch, similarity);
+                }
+            }
+            
+            if (bestMatch >= 0.9) {
+                correctWords += 1;
+            } else if (bestMatch >= 0.6) {
+                partialMatches += 0.7; // Give partial credit for close matches
+            } else if (bestMatch >= 0.4) {
+                partialMatches += 0.4; // Some credit for recognizable attempts
+            }
+        }
+        
+        // Calculate final score with bonus for effort
+        const rawScore = (correctWords + partialMatches) / originalWords.length;
+        let finalScore = Math.round(rawScore * 100);
+        
+        // Apply learning-friendly adjustments
+        if (finalScore >= 85) finalScore = Math.min(100, finalScore + 5); // Boost high scores
+        if (finalScore >= 70) finalScore = Math.min(100, finalScore + 3); // Encourage good attempts
+        if (finalScore >= 50) finalScore = Math.min(100, finalScore + 2); // Support learning efforts
+        
+        // Minimum score for any attempt (unless completely wrong)
+        if (finalScore > 0 && finalScore < 30) finalScore = 30;
+        
+        return Math.max(0, Math.min(100, finalScore));
+    }
+    
+    calculateWordSimilarity(word1, word2) {
+        // More forgiving word similarity calculation
+        if (word1 === word2) return 1;
+        
+        const maxLength = Math.max(word1.length, word2.length);
+        if (maxLength === 0) return 1;
+        
+        // Handle common pronunciation variations
+        word1 = this.normalizeForPronunciation(word1);
+        word2 = this.normalizeForPronunciation(word2);
+        
+        if (word1 === word2) return 1;
+        
+        const distance = this.levenshteinDistance(word1, word2);
+        const similarity = (maxLength - distance) / maxLength;
+        
+        // Boost similarity for short words (more forgiving)
+        if (maxLength <= 3 && similarity >= 0.5) {
+            return Math.min(1, similarity + 0.2);
+        }
+        
+        return similarity;
+    }
+    
+    normalizeForPronunciation(word) {
+        return word.toLowerCase()
+            // Common Spanish pronunciation variations
+            .replace(/[áà]/g, 'a')
+            .replace(/[éè]/g, 'e')
+            .replace(/[íì]/g, 'i')
+            .replace(/[óò]/g, 'o')
+            .replace(/[úù]/g, 'u')
+            .replace(/ñ/g, 'n')
+            // Common speech recognition errors
+            .replace(/[bv]/g, 'b') // b/v confusion in Spanish
+            .replace(/ll/g, 'y')   // ll/y confusion
+            .replace(/rr/g, 'r')   // double r simplification
+            // Remove silent letters that might be missed
+            .replace(/h/g, '')     // Silent h in Spanish
+            // French common variations
+            .replace(/[çc]/g, 'c')
+            .replace(/[àâä]/g, 'a')
+            .replace(/[èêë]/g, 'e')
+            .replace(/[îï]/g, 'i')
+            .replace(/[ôö]/g, 'o')
+            .replace(/[ûü]/g, 'u')
+            // German common variations
+            .replace(/ß/g, 'ss')
+            .replace(/ä/g, 'ae')
+            .replace(/ö/g, 'oe')
+            .replace(/ü/g, 'ue');
     }
     
     normalizeText(text) {
@@ -409,6 +505,24 @@ class LanguageLearningApp {
     showFeedback(transcript, accuracy) {
         this.userTranscriptionEl.textContent = transcript;
         this.scorePercentageEl.textContent = accuracy + '%';
+        
+        // Add encouraging feedback message
+        let message = '';
+        if (accuracy >= 90) {
+            message = ' - Excellent pronunciation! 🌟';
+        } else if (accuracy >= 80) {
+            message = ' - Great job! 👍';
+        } else if (accuracy >= 70) {
+            message = ' - Good effort! Keep practicing! 👏';
+        } else if (accuracy >= 60) {
+            message = ' - Nice try! You\'re improving! 💪';
+        } else if (accuracy >= 40) {
+            message = ' - Keep practicing, you\'re getting there! 📈';
+        } else {
+            message = ' - Don\'t give up! Practice makes perfect! 🎯';
+        }
+        
+        this.scorePercentageEl.textContent = accuracy + '%' + message;
         
         // Animate score bar
         setTimeout(() => {
