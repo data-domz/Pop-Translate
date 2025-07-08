@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spanish Language Learning App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🇪🇸 Spanish Learning App</h1>
+            <p>Practice your Spanish pronunciation</p>
+        </header>
+
+        <main>
+            <div class="phrase-container">
+                <div class="phrase-counter">
+                    <span id="current-phrase">1</span> / <span id="total-phrases">5</span>
+                </div>
+                
+                <div class="phrase-display">
+                    <h2 id="spanish-phrase">Loading...</h2>
+                    <p id="english-translation">Loading translation...</p>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="play-btn" class="btn btn-primary">
+                    <span class="btn-icon">🔊</span>
+                    Play Phrase
+                </button>
+                
+                <button id="record-btn" class="btn btn-secondary">
+                    <span class="btn-icon">🎤</span>
+                    <span class="btn-text">Record</span>
+                </button>
+                
+                <button id="next-btn" class="btn btn-accent">
+                    <span class="btn-icon">⏭️</span>
+                    Next Phrase
+                </button>
+            </div>
+
+            <div class="feedback-section" id="feedback-section" style="display: none;">
+                <div class="user-speech">
+                    <h3>What you said:</h3>
+                    <p id="user-transcription"></p>
+                </div>
+                
+                <div class="accuracy-score">
+                    <h3>Accuracy Score:</h3>
+                    <div class="score-display">
+                        <span id="score-percentage">0%</span>
+                        <div class="score-bar">
+                            <div class="score-fill" id="score-fill"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="error-message" id="error-message" style="display: none;"></div>
+        </main>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

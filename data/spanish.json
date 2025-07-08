@@ -1,0 +1,24 @@
+{
+    "phrases": [
+        {
+            "spanish": "Hola, ¿cómo estás?",
+            "english": "Hello, how are you?"
+        },
+        {
+            "spanish": "Me llamo María",
+            "english": "My name is María"
+        },
+        {
+            "spanish": "¿Dónde está el baño?",
+            "english": "Where is the bathroom?"
+        },
+        {
+            "spanish": "Gracias por su ayuda",
+            "english": "Thank you for your help"
+        },
+        {
+            "spanish": "No hablo español muy bien",
+            "english": "I don't speak Spanish very well"
+        }
+    ]
+}
