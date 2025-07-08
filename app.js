@@ -412,18 +412,31 @@ class LanguageLearningApp {
         // 1. Word Accuracy Analysis
         const wordAccuracy = this.calculateWordAccuracy(original, spoken);
         
-        // 2. Timing Analysis
-        const timingScore = this.calculateTimingScore(actualDuration);
+        // 2. Timing Analysis (adjusted for word accuracy)
+        let timingScore = this.calculateTimingScore(actualDuration);
+        if (wordAccuracy.score === 0) {
+            timingScore = { ...timingScore, score: 0, feedback: 'Please try the target phrase' };
+        }
         
-        // 3. Fluency Analysis
-        const fluencyScore = this.calculateFluencyScore(actualDuration);
+        // 3. Fluency Analysis (adjusted for word accuracy)
+        let fluencyScore = this.calculateFluencyScore(actualDuration);
+        if (wordAccuracy.score === 0) {
+            fluencyScore = { ...fluencyScore, score: 0, feedback: 'Focus on saying the correct words' };
+        }
         
-        // 4. Overall Score (weighted average)
-        const overallScore = Math.round(
-            (wordAccuracy.score * 0.6) + 
-            (timingScore.score * 0.2) + 
-            (fluencyScore.score * 0.2)
-        );
+        // 4. Overall Score - if word accuracy is 0, overall should be very low
+        let overallScore;
+        if (wordAccuracy.score === 0) {
+            // If completely wrong words, overall score should be very low regardless of timing/fluency
+            overallScore = 0;
+        } else {
+            // Normal weighted average for reasonable attempts
+            overallScore = Math.round(
+                (wordAccuracy.score * 0.6) + 
+                (timingScore.score * 0.2) + 
+                (fluencyScore.score * 0.2)
+            );
+        }
         
         return {
             wordAccuracy,
@@ -442,6 +455,7 @@ class LanguageLearningApp {
         let correctWords = 0;
         let partialMatches = 0;
         let details = [];
+        let hasAnyMatch = false;
         
         // Analyze each expected word
         for (let i = 0; i < originalWords.length; i++) {
@@ -456,25 +470,59 @@ class LanguageLearningApp {
                 }
             }
             
-            if (bestMatch.score >= 0.9) {
+            // More generous thresholds for correct pronunciation
+            if (bestMatch.score >= 0.85) {
                 correctWords++;
+                hasAnyMatch = true;
                 details.push({ expected: expectedWord, actual: bestMatch.word, status: 'correct' });
-            } else if (bestMatch.score >= 0.6) {
-                partialMatches += 0.7;
+            } else if (bestMatch.score >= 0.55) {
+                partialMatches += 0.8; // More generous partial credit
+                hasAnyMatch = true;
                 details.push({ expected: expectedWord, actual: bestMatch.word, status: 'partial' });
+            } else if (bestMatch.score >= 0.3) {
+                // Only give minimal credit if there's some similarity
+                partialMatches += 0.2;
+                if (bestMatch.score > 0.3) hasAnyMatch = true;
+                details.push({ expected: expectedWord, actual: bestMatch.word || '', status: 'incorrect' });
             } else {
                 details.push({ expected: expectedWord, actual: bestMatch.word || '', status: 'incorrect' });
             }
         }
         
-        // Check for extra words
+        // If no words have any reasonable similarity, return 0
+        if (!hasAnyMatch) {
+            return {
+                score: 0,
+                correctWords: 0,
+                totalWords: originalWords.length,
+                extraWords: spokenWords.length,
+                details,
+                feedback: "Try saying the phrase in the target language"
+            };
+        }
+        
+        // Check for extra words (penalize heavily for completely unrelated speech)
         const extraWords = Math.max(0, spokenWords.length - originalWords.length);
         
         const rawScore = (correctWords + partialMatches) / originalWords.length;
-        const score = Math.max(0, Math.min(100, Math.round(rawScore * 100) - (extraWords * 5)));
+        let score = Math.round(rawScore * 100);
+        
+        // Reduce score for extra unrelated words
+        if (extraWords > 2) {
+            score = Math.max(0, score - (extraWords * 10));
+        } else if (extraWords > 0) {
+            score = Math.max(0, score - (extraWords * 5));
+        }
+        
+        // More generous bonus for good attempts
+        if (score >= 70) {
+            score = Math.min(100, score + 8); // Bigger boost for good pronunciation
+        } else if (score >= 50) {
+            score = Math.min(100, score + 5); // Encourage decent attempts
+        }
         
         return {
-            score,
+            score: Math.max(0, Math.min(100, score)),
             correctWords,
             totalWords: originalWords.length,
             extraWords,
