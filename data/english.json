@@ -1,0 +1,64 @@
+{
+    "phrases": [
+        {
+            "english": "Hello, how are you?",
+            "translation": "A common greeting asking about someone's well-being"
+        },
+        {
+            "english": "Thank you very much",
+            "translation": "Expressing gratitude politely"
+        },
+        {
+            "english": "Excuse me, where is the bathroom?",
+            "translation": "Politely asking for directions to the restroom"
+        },
+        {
+            "english": "I would like to order coffee",
+            "translation": "Making a request at a café or restaurant"
+        },
+        {
+            "english": "What time is it?",
+            "translation": "Asking for the current time"
+        },
+        {
+            "english": "How much does this cost?",
+            "translation": "Inquiring about the price of something"
+        },
+        {
+            "english": "I don't understand",
+            "translation": "Expressing confusion or lack of comprehension"
+        },
+        {
+            "english": "Can you help me please?",
+            "translation": "Politely requesting assistance"
+        },
+        {
+            "english": "Where is the nearest hospital?",
+            "translation": "Asking for directions to medical facilities"
+        },
+        {
+            "english": "I'm sorry for being late",
+            "translation": "Apologizing for tardiness"
+        },
+        {
+            "english": "The weather is beautiful today",
+            "translation": "Commenting on pleasant weather conditions"
+        },
+        {
+            "english": "I need to catch a taxi",
+            "translation": "Expressing need for transportation"
+        },
+        {
+            "english": "What's your favorite food?",
+            "translation": "Asking about food preferences"
+        },
+        {
+            "english": "I'm learning English",
+            "translation": "Stating that you're studying the language"
+        },
+        {
+            "english": "Have a wonderful day",
+            "translation": "A friendly farewell wishing someone well"
+        }
+    ]
+}

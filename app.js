@@ -8,7 +8,7 @@ class LanguageLearningApp {
         this.isRecording = false;
         this.recognition = null;
         this.synthesis = window.speechSynthesis;
-        this.currentLanguage = 'spanish';
+        this.currentLanguage = 'english';
         
         // Speech analysis tracking
         this.speechStartTime = null;
@@ -18,6 +18,15 @@ class LanguageLearningApp {
         
         // Language configurations
         this.languages = {
+            english: {
+                name: 'English',
+                flag: '🇺🇸',
+                dataFile: 'data/english.json',
+                phraseKey: 'english',
+                ttsLang: 'en-US',
+                recognitionLang: 'en-US',
+                fallbackTts: 'en-GB'
+            },
             spanish: {
                 name: 'Spanish',
                 flag: '🇪🇸',
@@ -224,7 +233,14 @@ class LanguageLearningApp {
         const config = this.languages[this.currentLanguage];
         
         this.phraseEl.textContent = phrase[config.phraseKey];
-        this.englishTranslationEl.textContent = phrase.english;
+        
+        // Use the appropriate translation key based on language
+        if (this.currentLanguage === 'english') {
+            this.englishTranslationEl.textContent = phrase.translation;
+        } else {
+            this.englishTranslationEl.textContent = phrase.english;
+        }
+        
         this.currentPhraseEl.textContent = this.currentPhraseIndex + 1;
         
         // Hide feedback section when displaying new phrase

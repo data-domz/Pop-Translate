@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a browser-based multi-language pronunciation learning application that helps users practice phrases in Spanish, French, and German through interactive speech recognition and synthesis. The app features a modern, professional design with a language selector dropdown, presents phrases with English translations, allows users to hear the correct pronunciation, record their own pronunciation attempts, and provides feedback on their performance.
+This is a browser-based multi-language pronunciation learning application that helps users practice phrases in English, Spanish, French, and German through interactive speech recognition and synthesis. The app features a modern, professional design with a language selector dropdown, presents phrases with English translations, allows users to hear the correct pronunciation, record their own pronunciation attempts, and provides feedback on their performance.
 
 ## System Architecture
 
@@ -113,7 +113,7 @@ This is a browser-based multi-language pronunciation learning application that h
   - Better responsive design for mobile devices
   - Animated button effects and transitions
 - July 08, 2025. Added multi-language support:
-  - Language selector dropdown for Spanish, French, and German
+  - Language selector dropdown for English, Spanish, French, and German
   - Dynamic phrase loading from language-specific JSON files
   - Intelligent voice selection with Mexican Spanish preference
   - Language-specific speech recognition configuration
@@ -138,6 +138,12 @@ This is a browser-based multi-language pronunciation learning application that h
   - Overall Score: Weighted combination (60% accuracy, 20% timing, 20% fluency)
   - Enhanced UI: Professional feedback display with individual progress bars and specific suggestions
   - Conversational feedback: Detailed, encouraging messages for each dimension
+- July 08, 2025. Added English language support:
+  - English as first language option in dropdown selector
+  - 15 common English phrases for pronunciation practice
+  - American English (en-US) voice preference with British English (en-GB) fallback
+  - Set English as default language for easier access
+  - Updated translation display logic to handle different key structures
 
 ## User Preferences
 
