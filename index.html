@@ -3,64 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spanish Language Learning App</title>
+    <title>Pop Translate</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <div class="language-selector">
-            <label for="language-select">Choose Language:</label>
-            <select id="language-select">
-                <option value="english">🇺🇸 English</option>
-                <option value="spanish">🇪🇸 Spanish</option>
-                <option value="french">🇫🇷 French</option>
-                <option value="german">🇩🇪 German</option>
-            </select>
-        </div>
-        
+    <div class="container app-bg">
         <header>
-            <h1 id="app-title">🇪🇸 Spanish Learning App</h1>
+            <h1 id="app-brand" class="app-brand">Pop Translate</h1>
+            <h2 id="app-title">🇪🇸 Spanish Learning App</h2>
             <p id="app-description">Practice your Spanish pronunciation</p>
         </header>
 
-        <main>
-            <div class="phrase-container">
-                <div class="phrase-counter">
-                    <span id="current-phrase">1</span> / <span id="total-phrases">5</span>
+        <section class="dropdown-section">
+            <div class="dropdowns-group">
+                <div class="dropdown-block">
+                    <label for="my-language-select"><span class="dropdown-icon">🌐</span> My Language:</label>
+                    <select id="my-language-select" class="dropdown-select">
+                        <option value="english">🇺🇸 English</option>
+                        <option value="spanish">🇪🇸 Spanish</option>
+                        <option value="french">🇫🇷 French</option>
+                        <option value="german">🇩🇪 German</option>
+                    </select>
                 </div>
-                
-                <div class="phrase-display">
-                    <h2 id="spanish-phrase">Loading...</h2>
-                    <p id="english-translation">Loading translation...</p>
+                <div class="dropdown-block">
+                    <label for="language-select"><span class="dropdown-icon">🎯</span> Choose Language:</label>
+                    <select id="language-select" class="dropdown-select">
+                        <option value="english">🇺🇸 English</option>
+                        <option value="spanish">🇪🇸 Spanish</option>
+                        <option value="french">🇫🇷 French</option>
+                        <option value="german">🇩🇪 German</option>
+                    </select>
                 </div>
             </div>
+            <div class="fade-divider"></div>
+        </section>
+
+        <main>
+            <div class="phrase-container">
+                <div class="phrase-counter-group">
+                    <div class="phrase-counter" id="phrase-counter">
+                        <span id="current-phrase">1</span> / <span id="total-phrases">5</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="progress-bar-fill"></div>
+                    </div>
+                </div>
+                <div class="phrase-jump-block">
+                    <label for="phrase-jump-select" class="phrase-jump-label">Jump to Phrase:</label>
+                    <select id="phrase-jump-select" class="dropdown-select phrase-jump-select"></select>
+                </div>
+                <div class="phrase-display card">
+                    <h2 id="spanish-phrase" class="main-phrase">Loading...</h2>
+                    <p id="english-translation" class="translation-phrase">Loading translation...</p>
+                </div>
+                <div class="voice-speed-control">
+                    <label for="voice-speed-range" class="voice-speed-label">Voice Speed:
+                        <span id="voice-speed-value">1.00x</span>
+                    </label>
+                    <input type="range" id="voice-speed-range" min="0.5" max="1.5" step="0.1" value="1.00" class="voice-speed-range" />
+                </div>
 
             <div class="controls">
-                <button id="play-btn" class="btn btn-primary">
-                    <span class="btn-icon">🔊</span>
+                <button id="play-btn" class="btn btn-primary" title="Play Phrase">
+                    <span class="btn-icon large">🔊</span>
                     Play Phrase
                 </button>
-                
-                <button id="record-btn" class="btn btn-secondary">
-                    <span class="btn-icon">🎤</span>
+                <button id="record-btn" class="btn btn-secondary" title="Record Yourself">
+                    <span class="btn-icon large">🎤</span>
                     <span class="btn-text">Record</span>
                 </button>
-                
-                <button id="next-btn" class="btn btn-accent">
-                    <span class="btn-icon">⏭️</span>
+                <button id="next-btn" class="btn btn-accent" title="Next Phrase">
+                    <span class="btn-icon large">⏭️</span>
                     Next Phrase
                 </button>
             </div>
-
             <div class="feedback-section" id="feedback-section" style="display: none;">
                 <div class="user-speech">
                     <h3>What you said:</h3>
                     <p id="user-transcription"></p>
                 </div>
-                
                 <div class="speech-analysis">
                     <h3>Speech Analysis:</h3>
-                    
                     <div class="analysis-grid">
                         <div class="analysis-item">
                             <div class="analysis-header">
@@ -72,7 +96,6 @@
                             </div>
                             <p class="analysis-feedback" id="word-accuracy-feedback"></p>
                         </div>
-                        
                         <div class="analysis-item">
                             <div class="analysis-header">
                                 <span class="analysis-label">Timing</span>
@@ -83,7 +106,6 @@
                             </div>
                             <p class="analysis-feedback" id="timing-feedback"></p>
                         </div>
-                        
                         <div class="analysis-item">
                             <div class="analysis-header">
                                 <span class="analysis-label">Fluency</span>
@@ -95,7 +117,6 @@
                             <p class="analysis-feedback" id="fluency-feedback"></p>
                         </div>
                     </div>
-                    
                     <div class="overall-score">
                         <h4>Overall Score:</h4>
                         <div class="overall-score-display">
@@ -108,11 +129,9 @@
                     </div>
                 </div>
             </div>
-
             <div class="error-message" id="error-message" style="display: none;"></div>
         </main>
     </div>
-
     <script src="app.js"></script>
 </body>
 </html>

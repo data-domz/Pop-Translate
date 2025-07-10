@@ -9,6 +9,8 @@ class LanguageLearningApp {
         this.recognition = null;
         this.synthesis = window.speechSynthesis;
         this.currentLanguage = 'english';
+        this.myLanguage = 'english'; // New state for My Language
+        this.voiceSpeed = 1.00; // New state for voice speed
         
         // Speech analysis tracking
         this.speechStartTime = null;
@@ -58,6 +60,9 @@ class LanguageLearningApp {
         
         // DOM elements
         this.languageSelect = document.getElementById('language-select');
+        this.myLanguageSelect = document.getElementById('my-language-select'); // New DOM reference
+        this.voiceSpeedRange = document.getElementById('voice-speed-range');
+        this.voiceSpeedValue = document.getElementById('voice-speed-value');
         this.appTitle = document.getElementById('app-title');
         this.appDescription = document.getElementById('app-description');
         this.phraseEl = document.getElementById('spanish-phrase');
@@ -70,6 +75,7 @@ class LanguageLearningApp {
         this.feedbackSection = document.getElementById('feedback-section');
         this.userTranscriptionEl = document.getElementById('user-transcription');
         this.errorMessageEl = document.getElementById('error-message');
+        this.phraseJumpSelect = document.getElementById('phrase-jump-select');
         
         // Detailed feedback elements
         this.wordAccuracyScoreEl = document.getElementById('word-accuracy-score');
@@ -100,12 +106,15 @@ class LanguageLearningApp {
             // Check browser compatibility
             this.checkBrowserSupport();
             
+            // Populate phrase jump dropdown
+            this.populatePhraseJumpDropdown();
+            
         } catch (error) {
             this.showError('Failed to initialize the app: ' + error.message);
         }
     }
     
-    async loadLanguage(languageKey) {
+    async loadLanguage(languageKey, phraseIndexToShow) {
         try {
             this.currentLanguage = languageKey;
             const config = this.languages[languageKey];
@@ -116,10 +125,18 @@ class LanguageLearningApp {
             // Update UI for new language
             this.updateLanguageUI(config);
             
-            // Reset phrase index
-            this.currentPhraseIndex = 0;
+            // Set phrase index to previous or 0 if out of bounds
+            if (
+                typeof phraseIndexToShow === 'number' &&
+                phraseIndexToShow >= 0 &&
+                phraseIndexToShow < this.phrases.length
+            ) {
+                this.currentPhraseIndex = phraseIndexToShow;
+            } else {
+                this.currentPhraseIndex = 0;
+            }
             
-            // Display first phrase
+            // Display phrase
             this.displayCurrentPhrase();
             
             // Update UI
@@ -127,6 +144,9 @@ class LanguageLearningApp {
             
             // Update speech recognition language
             this.updateSpeechRecognition();
+            
+            // Repopulate phrase jump dropdown
+            this.populatePhraseJumpDropdown();
             
         } catch (error) {
             this.showError('Failed to load language: ' + error.message);
@@ -136,7 +156,7 @@ class LanguageLearningApp {
     updateLanguageUI(config) {
         this.appTitle.textContent = `${config.flag} ${config.name} Learning App`;
         this.appDescription.textContent = `Practice your ${config.name} pronunciation`;
-        document.title = `${config.name} Language Learning App`;
+        document.title = 'Pop Translate';
     }
     
     async loadPhrases(dataFile) {
@@ -202,6 +222,11 @@ class LanguageLearningApp {
         this.recordBtn.addEventListener('click', () => this.toggleRecording());
         this.nextBtn.addEventListener('click', () => this.nextPhrase());
         this.languageSelect.addEventListener('change', (e) => this.handleLanguageChange(e.target.value));
+        this.myLanguageSelect.addEventListener('change', (e) => this.handleMyLanguageChange(e.target.value)); // New event
+        this.voiceSpeedRange.addEventListener('input', (e) => this.handleVoiceSpeedChange(e.target.value));
+        if (this.phraseJumpSelect) {
+            this.phraseJumpSelect.addEventListener('change', (e) => this.handlePhraseJump(e.target.value));
+        }
     }
     
     async handleLanguageChange(languageKey) {
@@ -209,20 +234,30 @@ class LanguageLearningApp {
             // Hide feedback and error messages
             this.feedbackSection.style.display = 'none';
             this.hideError();
-            
             // Stop any ongoing recording
             if (this.isRecording) {
                 this.stopRecording();
             }
-            
             // Cancel any ongoing speech
             this.synthesis.cancel();
-            
-            // Load new language
-            await this.loadLanguage(languageKey);
-            
+            // Preserve current phrase index
+            const prevIndex = this.currentPhraseIndex;
+            // Load new language, passing previous index
+            await this.loadLanguage(languageKey, prevIndex);
         } catch (error) {
             this.showError('Failed to switch language: ' + error.message);
+        }
+    }
+    
+    handleMyLanguageChange(languageKey) {
+        this.myLanguage = languageKey;
+        this.displayCurrentPhrase();
+    }
+
+    handleVoiceSpeedChange(value) {
+        this.voiceSpeed = parseFloat(value);
+        if (this.voiceSpeedValue) {
+            this.voiceSpeedValue.textContent = this.voiceSpeed.toFixed(2) + 'x';
         }
     }
     
@@ -234,14 +269,15 @@ class LanguageLearningApp {
         
         this.phraseEl.textContent = phrase[config.phraseKey];
         
-        // Use the appropriate translation key based on language
-        if (this.currentLanguage === 'english') {
-            this.englishTranslationEl.textContent = phrase.translation;
-        } else {
-            this.englishTranslationEl.textContent = phrase.english;
-        }
+        // Show the translation in the user's selected language
+        this.englishTranslationEl.textContent = phrase[this.myLanguage];
         
         this.currentPhraseEl.textContent = this.currentPhraseIndex + 1;
+        
+        // Sync phrase jump dropdown
+        if (this.phraseJumpSelect) {
+            this.phraseJumpSelect.value = String(this.currentPhraseIndex);
+        }
         
         // Hide feedback section when displaying new phrase
         this.feedbackSection.style.display = 'none';
@@ -266,7 +302,7 @@ class LanguageLearningApp {
         }
         
         utterance.lang = config.ttsLang;
-        utterance.rate = 0.8; // Slightly slower for learning
+        utterance.rate = this.voiceSpeed; // Use user-selected speed
         utterance.pitch = 1.0;
         
         // Provide visual feedback
@@ -914,6 +950,12 @@ class LanguageLearningApp {
         } else {
             this.nextBtn.innerHTML = '<span class="btn-icon">⏭️</span>Next Phrase';
         }
+        // Update progress bar
+        const progressBar = document.getElementById('progress-bar-fill');
+        if (progressBar && this.phrases.length > 0) {
+            const percent = ((this.currentPhraseIndex + 1) / this.phrases.length) * 100;
+            progressBar.style.width = percent + '%';
+        }
     }
     
     showError(message) {
@@ -928,6 +970,30 @@ class LanguageLearningApp {
     
     hideError() {
         this.errorMessageEl.style.display = 'none';
+    }
+
+    handlePhraseJump(indexStr) {
+        const idx = parseInt(indexStr, 10);
+        if (!isNaN(idx) && idx >= 0 && idx < this.phrases.length) {
+            this.currentPhraseIndex = idx;
+            this.displayCurrentPhrase();
+            this.updateUI();
+        }
+    }
+
+    populatePhraseJumpDropdown() {
+        if (!this.phraseJumpSelect) return;
+        // Clear existing options
+        this.phraseJumpSelect.innerHTML = '';
+        const config = this.languages[this.currentLanguage];
+        this.phrases.forEach((phrase, idx) => {
+            const option = document.createElement('option');
+            option.value = idx;
+            option.textContent = `${idx + 1}. ${phrase[config.phraseKey]}`;
+            this.phraseJumpSelect.appendChild(option);
+        });
+        // Set current value
+        this.phraseJumpSelect.value = String(this.currentPhraseIndex);
     }
 }
 
