@@ -23,7 +23,7 @@ class LanguageLearningApp {
             english: {
                 name: 'English',
                 flag: '🇺🇸',
-                dataFile: '/data/english.json',
+                dataFile: 'data/english.json',
                 phraseKey: 'english',
                 ttsLang: 'en-US',
                 recognitionLang: 'en-US',
@@ -32,7 +32,7 @@ class LanguageLearningApp {
             spanish: {
                 name: 'Spanish',
                 flag: '🇪🇸',
-                dataFile: '/data/spanish.json',
+                dataFile: 'data/spanish.json',
                 phraseKey: 'spanish',
                 ttsLang: 'es-MX', // Mexican Spanish preferred
                 recognitionLang: 'es-MX',
@@ -41,7 +41,7 @@ class LanguageLearningApp {
             french: {
                 name: 'French',
                 flag: '🇫🇷',
-                dataFile: '/data/french.json',
+                dataFile: 'data/french.json',
                 phraseKey: 'french',
                 ttsLang: 'fr-FR',
                 recognitionLang: 'fr-FR',
@@ -50,7 +50,7 @@ class LanguageLearningApp {
             german: {
                 name: 'German',
                 flag: '🇩🇪',
-                dataFile: '/data/german.json',
+                dataFile: 'data/german.json',
                 phraseKey: 'german',
                 ttsLang: 'de-DE',
                 recognitionLang: 'de-DE',
