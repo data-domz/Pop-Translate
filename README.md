@@ -1,4 +1,4 @@
-# SpanishPhrasePro
+# Pop Translate
 
 ## Deployment (Vercel)
 
