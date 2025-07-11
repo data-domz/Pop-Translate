@@ -91,6 +91,9 @@ class LanguageLearningApp {
         this.overallScoreFillEl = document.getElementById('overall-score-fill');
         this.overallFeedbackEl = document.getElementById('overall-feedback');
         
+        // Auth state
+        this.user = null; // { email, isPremium }
+        
         // Initialize the app
         this.init();
     }
@@ -99,6 +102,7 @@ class LanguageLearningApp {
         try {
             // Set up event listeners first
             this.setupEventListeners();
+            this.setupAuthUI();
             
             // Load phrases for default language
             await this.loadLanguage(this.currentLanguage);
@@ -994,6 +998,91 @@ class LanguageLearningApp {
         });
         // Set current value
         this.phraseJumpSelect.value = String(this.currentPhraseIndex);
+    }
+
+    setupAuthUI() {
+        // Elements
+        this.loginModal = document.getElementById('login-modal');
+        this.loginBtn = document.getElementById('login-btn');
+        this.logoutBtn = document.getElementById('logout-btn');
+        this.userGreeting = document.getElementById('user-greeting');
+        this.loginSubmit = document.getElementById('login-submit');
+        this.loginEmail = document.getElementById('login-email');
+        this.loginPassword = document.getElementById('login-password');
+        this.loginError = document.getElementById('login-error');
+        this.closeLogin = document.getElementById('close-login');
+        this.premiumFeature = document.getElementById('premium-feature');
+        this.upgradeBtn = document.getElementById('upgrade-btn');
+
+        // Restore user from localStorage
+        const userStr = localStorage.getItem('user');
+        if (userStr) {
+            this.user = JSON.parse(userStr);
+        }
+        this.updateAuthUI();
+
+        // Event listeners
+        this.loginBtn.addEventListener('click', () => this.showLoginModal());
+        this.logoutBtn.addEventListener('click', () => this.logout());
+        this.loginSubmit.addEventListener('click', () => this.login());
+        this.closeLogin.addEventListener('click', () => this.hideLoginModal());
+        this.upgradeBtn.addEventListener('click', () => this.upgradeToPremium());
+        window.addEventListener('click', (e) => {
+            if (e.target === this.loginModal) this.hideLoginModal();
+        });
+    }
+    showLoginModal() {
+        this.loginModal.style.display = 'flex';
+        this.loginError.textContent = '';
+        this.loginEmail.value = '';
+        this.loginPassword.value = '';
+    }
+    hideLoginModal() {
+        this.loginModal.style.display = 'none';
+    }
+    login() {
+        const email = this.loginEmail.value.trim();
+        const password = this.loginPassword.value;
+        if (!email || !password) {
+            this.loginError.textContent = 'Please enter email and password.';
+            return;
+        }
+        // Mock auth: any email/password accepted
+        this.user = { email, isPremium: false };
+        localStorage.setItem('user', JSON.stringify(this.user));
+        this.updateAuthUI();
+        this.hideLoginModal();
+    }
+    logout() {
+        this.user = null;
+        localStorage.removeItem('user');
+        this.updateAuthUI();
+    }
+    upgradeToPremium() {
+        if (!this.user) return;
+        // Placeholder for Stripe integration
+        this.user.isPremium = true;
+        localStorage.setItem('user', JSON.stringify(this.user));
+        this.updateAuthUI();
+        alert('You are now a premium user! (Stripe integration coming soon)');
+    }
+    updateAuthUI() {
+        if (this.user) {
+            this.userGreeting.textContent = `Logged in as ${this.user.email}${this.user.isPremium ? ' (Premium)' : ''}`;
+            this.loginBtn.style.display = 'none';
+            this.logoutBtn.style.display = 'inline-block';
+            // Feature gating
+            if (this.user.isPremium) {
+                this.premiumFeature.style.display = 'none';
+            } else {
+                this.premiumFeature.style.display = 'block';
+            }
+        } else {
+            this.userGreeting.textContent = 'Not logged in';
+            this.loginBtn.style.display = 'inline-block';
+            this.logoutBtn.style.display = 'none';
+            this.premiumFeature.style.display = 'block';
+        }
     }
 }
 

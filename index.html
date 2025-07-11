@@ -8,6 +8,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span id="close-login" class="close">&times;</span>
+            <h2>Login</h2>
+            <input type="email" id="login-email" placeholder="Email" />
+            <input type="password" id="login-password" placeholder="Password" />
+            <button id="login-submit">Login</button>
+            <div id="login-error" style="color:red;"></div>
+        </div>
+    </div>
+    <!-- User Status Bar -->
+    <div id="user-status" style="position:absolute;top:10px;right:10px;">
+        <span id="user-greeting">Not logged in</span>
+        <button id="login-btn">Login</button>
+        <button id="logout-btn" style="display:none;">Logout</button>
+    </div>
+    <!-- Premium Feature Placeholder -->
+    <div id="premium-feature" style="display:none;margin:20px 0;padding:10px;border:2px dashed gold;">
+        <strong>Premium Feature:</strong> This feature is available to premium users only. <button id="upgrade-btn">Upgrade</button>
+    </div>
     <div class="container app-bg">
         <header>
             <h1 id="app-brand" class="app-brand">Pop Translate</h1>

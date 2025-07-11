@@ -657,3 +657,43 @@ header p#app-description {
         gap: 10px;
     }
 }
+
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 300px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  position: relative;
+}
+.close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+#user-status {
+  background: #f8f8f8;
+  border-radius: 4px;
+  padding: 6px 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  font-size: 14px;
+}
+#premium-feature {
+  background: #fffbe6;
+  color: #b8860b;
+}
