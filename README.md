@@ -13,9 +13,10 @@ Pop Translate is a modern, multi-language phrase learning and pronunciation prac
 
 ## Screenshots
 
-| Main App | Speech Analysis |
-|---|---|
-| ![Main Screen](screenshots/main.png) | ![Feedback Example](screenshots/feedback.png) |
+<div align="center">
+  <img src="screenshots/main.jpg" alt="Main App Screen" width="45%" />
+  <img src="screenshots/feedback.jpg" alt="Speech Analysis Feedback" width="45%" />
+</div>
 
 ## Getting Started
 
