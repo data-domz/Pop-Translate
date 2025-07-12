@@ -11,6 +11,12 @@ Pop Translate is a modern, multi-language phrase learning and pronunciation prac
 - **Login and feature gating**: Basic login/logout UI with premium feature placeholders (future Stripe integration).
 - **Modern UI**: Responsive, accessible, and visually appealing.
 
+## Screenshots
+
+| Main App | Speech Analysis |
+|---|---|
+| ![Main Screen](screenshots/main.png) | ![Feedback Example](screenshots/feedback.png) |
+
 ## Getting Started
 
 ### Local Development
