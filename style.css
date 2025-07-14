@@ -612,6 +612,9 @@ header p#app-description {
     }
 }
 
+/* The .dropdown-block and .dropdown-select classes already style dropdowns. No new styles needed for #category-select, but add a comment for clarity. */
+/* #category-select uses .dropdown-select for consistent styling */
+
 /* Responsive styles */
 @media (max-width: 900px) {
     .container {

@@ -11,6 +11,7 @@ class LanguageLearningApp {
         this.currentLanguage = 'english';
         this.myLanguage = 'english'; // New state for My Language
         this.voiceSpeed = 1.00; // New state for voice speed
+        this.category = 'Greetings & Introductions';
         
         // Speech analysis tracking
         this.speechStartTime = null;
@@ -76,6 +77,7 @@ class LanguageLearningApp {
         this.userTranscriptionEl = document.getElementById('user-transcription');
         this.errorMessageEl = document.getElementById('error-message');
         this.phraseJumpSelect = document.getElementById('phrase-jump-select');
+        this.categorySelect = document.getElementById('category-select');
         
         // Detailed feedback elements
         this.wordAccuracyScoreEl = document.getElementById('word-accuracy-score');
@@ -104,8 +106,8 @@ class LanguageLearningApp {
             this.setupEventListeners();
             this.setupAuthUI();
             
-            // Load phrases for default language
-            await this.loadLanguage(this.currentLanguage);
+            // Load phrases for default language and default category
+            await this.loadLanguage(this.currentLanguage, 0, this.category);
             
             // Check browser compatibility
             this.checkBrowserSupport();
@@ -118,13 +120,13 @@ class LanguageLearningApp {
         }
     }
     
-    async loadLanguage(languageKey, phraseIndexToShow) {
+    async loadLanguage(languageKey, phraseIndexToShow, categoryName) {
         try {
             this.currentLanguage = languageKey;
             const config = this.languages[languageKey];
             
             // Load phrases from JSON file
-            await this.loadPhrases(config.dataFile);
+            await this.loadPhrases(config.dataFile, categoryName || this.category);
             
             // Update UI for new language
             this.updateLanguageUI(config);
@@ -163,15 +165,22 @@ class LanguageLearningApp {
         document.title = 'Pop Translate';
     }
     
-    async loadPhrases(dataFile) {
+    async loadPhrases(dataFile, categoryName) {
         try {
             const response = await fetch(dataFile);
             if (!response.ok) {
                 throw new Error('Failed to load phrases data');
             }
             const data = await response.json();
-            this.phrases = data.phrases;
+            // Find the selected category
+            let categories = data.categories || [];
+            let selectedCategory = categories.find(cat => cat.name === (categoryName || this.category));
+            if (!selectedCategory) selectedCategory = categories[0];
+            this.category = selectedCategory.name;
+            this.phrases = selectedCategory.phrases;
             this.totalPhrasesEl.textContent = this.phrases.length;
+            // Store all categories for selector
+            this.allCategories = categories;
         } catch (error) {
             throw new Error('Could not load phrases: ' + error.message);
         }
@@ -231,6 +240,9 @@ class LanguageLearningApp {
         if (this.phraseJumpSelect) {
             this.phraseJumpSelect.addEventListener('change', (e) => this.handlePhraseJump(e.target.value));
         }
+        if (this.categorySelect) {
+            this.categorySelect.addEventListener('change', (e) => this.handleCategoryChange(e.target.value));
+        }
     }
     
     async handleLanguageChange(languageKey) {
@@ -247,7 +259,7 @@ class LanguageLearningApp {
             // Preserve current phrase index
             const prevIndex = this.currentPhraseIndex;
             // Load new language, passing previous index
-            await this.loadLanguage(languageKey, prevIndex);
+            await this.loadLanguage(languageKey, prevIndex, this.category);
         } catch (error) {
             this.showError('Failed to switch language: ' + error.message);
         }
@@ -267,63 +279,40 @@ class LanguageLearningApp {
     
     displayCurrentPhrase() {
         if (this.phrases.length === 0) return;
-        
         const phrase = this.phrases[this.currentPhraseIndex];
         const config = this.languages[this.currentLanguage];
-        
         this.phraseEl.textContent = phrase[config.phraseKey];
-        
-        // Show the translation in the user's selected language
         this.englishTranslationEl.textContent = phrase[this.myLanguage];
-        
         this.currentPhraseEl.textContent = this.currentPhraseIndex + 1;
-        
-        // Sync phrase jump dropdown
+        this.totalPhrasesEl.textContent = this.phrases.length;
         if (this.phraseJumpSelect) {
             this.phraseJumpSelect.value = String(this.currentPhraseIndex);
         }
-        
-        // Hide feedback section when displaying new phrase
         this.feedbackSection.style.display = 'none';
     }
     
     playCurrentPhrase() {
         if (this.phrases.length === 0) return;
-        
-        // Cancel any ongoing speech
         this.synthesis.cancel();
-        
         const phrase = this.phrases[this.currentPhraseIndex];
         const config = this.languages[this.currentLanguage];
         const text = phrase[config.phraseKey];
-        
         const utterance = new SpeechSynthesisUtterance(text);
-        
-        // Find appropriate voice for the language
         const voice = this.findBestVoice(config);
-        if (voice) {
-            utterance.voice = voice;
-        }
-        
+        if (voice) utterance.voice = voice;
         utterance.lang = config.ttsLang;
-        utterance.rate = this.voiceSpeed; // Use user-selected speed
+        utterance.rate = this.voiceSpeed;
         utterance.pitch = 1.0;
-        
-        // Provide visual feedback
         this.playBtn.disabled = true;
         this.playBtn.innerHTML = '<span class="btn-icon">🔊</span>Playing...';
-        
         utterance.onend = () => {
             this.playBtn.disabled = false;
             this.playBtn.innerHTML = '<span class="btn-icon">🔊</span>Play Phrase';
         };
-        
         utterance.onerror = () => {
             this.playBtn.disabled = false;
             this.playBtn.innerHTML = '<span class="btn-icon">🔊</span>Play Phrase';
-            this.showError('Failed to play audio. Please try again.');
         };
-        
         this.synthesis.speak(utterance);
     }
     
@@ -710,8 +699,8 @@ class LanguageLearningApp {
     
     calculateSpeechPatternBonus(original, spoken) {
         // Bonus for attempting the right structure even if words are misheard
-        const originalStructure = original.replace(/[aeiouáéíóúàèìòù]/gi, 'v').replace(/[bcdfghjklmnpqrstvwxyzñç]/gi, 'c');
-        const spokenStructure = spoken.replace(/[aeiouáéíóúàèìòù]/gi, 'v').replace(/[bcdfghjklmnpqrstvwxyzñç]/gi, 'c');
+        const originalStructure = original.replace(/[aeiouáéíóú]/gi, 'v').replace(/[bcdfghjklmnpqrstvwxyzñç]/gi, 'c');
+        const spokenStructure = spoken.replace(/[aeiouáéíóú]/gi, 'v').replace(/[bcdfghjklmnpqrstvwxyzñç]/gi, 'c');
         
         const similarity = this.calculateWordSimilarity(originalStructure, spokenStructure);
         
@@ -942,6 +931,7 @@ class LanguageLearningApp {
     }
     
     nextPhrase() {
+        if (this.phrases.length === 0) return;
         this.currentPhraseIndex = (this.currentPhraseIndex + 1) % this.phrases.length;
         this.displayCurrentPhrase();
         this.updateUI();
