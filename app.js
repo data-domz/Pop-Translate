@@ -990,6 +990,23 @@ class LanguageLearningApp {
         this.phraseJumpSelect.value = String(this.currentPhraseIndex);
     }
 
+    async handleCategoryChange(categoryName) {
+        try {
+            this.feedbackSection.style.display = 'none';
+            this.hideError();
+            // Stop any ongoing recording
+            if (this.isRecording) {
+                this.stopRecording();
+            }
+            // Cancel any ongoing speech
+            this.synthesis.cancel();
+            // Load phrases for the selected category, reset to first phrase
+            await this.loadLanguage(this.currentLanguage, 0, categoryName);
+        } catch (error) {
+            this.showError('Failed to switch category: ' + error.message);
+        }
+    }
+
     setupAuthUI() {
         // Elements
         this.loginModal = document.getElementById('login-modal');
