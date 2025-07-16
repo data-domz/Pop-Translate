@@ -293,26 +293,67 @@ class LanguageLearningApp {
     
     playCurrentPhrase() {
         if (this.phrases.length === 0) return;
-        this.synthesis.cancel();
+        
         const phrase = this.phrases[this.currentPhraseIndex];
         const config = this.languages[this.currentLanguage];
         const text = phrase[config.phraseKey];
+        
+        // Check if audio file exists for this phrase
+        if (phrase.audioFile) {
+            this.playAudioFile(phrase.audioFile, text);
+        } else {
+            // Fallback to speech synthesis
+            this.playWithSpeechSynthesis(text, config);
+        }
+    }
+    
+    playAudioFile(audioPath, fallbackText) {
+        this.playBtn.disabled = true;
+        this.playBtn.innerHTML = '<span class="btn-icon">🔊</span>Playing...';
+        
+        const audio = new Audio(audioPath);
+        
+        audio.oncanplaythrough = () => {
+            // Audio loaded successfully, start playing
+            audio.play().catch(error => {
+                console.warn('Audio playback failed, falling back to speech synthesis:', error);
+                this.playWithSpeechSynthesis(fallbackText, this.languages[this.currentLanguage]);
+            });
+        };
+        
+        audio.onended = () => {
+            this.playBtn.disabled = false;
+            this.playBtn.innerHTML = '<span class="btn-icon">🔊</span>Play Phrase';
+        };
+        
+        audio.onerror = () => {
+            console.warn('Audio file not found, falling back to speech synthesis');
+            this.playWithSpeechSynthesis(fallbackText, this.languages[this.currentLanguage]);
+        };
+    }
+    
+    playWithSpeechSynthesis(text, config) {
+        this.synthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
         const voice = this.findBestVoice(config);
         if (voice) utterance.voice = voice;
         utterance.lang = config.ttsLang;
         utterance.rate = this.voiceSpeed;
         utterance.pitch = 1.0;
+        
         this.playBtn.disabled = true;
         this.playBtn.innerHTML = '<span class="btn-icon">🔊</span>Playing...';
+        
         utterance.onend = () => {
             this.playBtn.disabled = false;
             this.playBtn.innerHTML = '<span class="btn-icon">🔊</span>Play Phrase';
         };
+        
         utterance.onerror = () => {
             this.playBtn.disabled = false;
             this.playBtn.innerHTML = '<span class="btn-icon">🔊</span>Play Phrase';
         };
+        
         this.synthesis.speak(utterance);
     }
     

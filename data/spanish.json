@@ -3,211 +3,1471 @@
     {
       "name": "Greetings & Introductions",
       "phrases": [
-        { "id": 1, "english": "Hello!", "spanish": "¡Hola!", "french": "Bonjour!", "german": "Hallo!" },
-        { "id": 2, "english": "Good morning", "spanish": "Buenos días", "french": "Bonjour", "german": "Guten Morgen" },
-        { "id": 3, "english": "Good evening", "spanish": "Buenas tardes", "french": "Bonsoir", "german": "Guten Abend" },
-        { "id": 4, "english": "Good night", "spanish": "Buenas noches", "french": "Bonne nuit", "german": "Gute Nacht" },
-        { "id": 5, "english": "How are you?", "spanish": "¿Cómo estás?", "french": "Comment ça va ?", "german": "Wie geht es dir?" },
-        { "id": 6, "english": "Nice to meet you", "spanish": "Mucho gusto", "french": "Enchanté", "german": "Freut mich" },
-        { "id": 7, "english": "What's your name?", "spanish": "¿Cómo te llamas?", "french": "Comment tu t'appelles ?", "german": "Wie heißt du?" },
-        { "id": 8, "english": "My name is...", "spanish": "Me llamo...", "french": "Je m'appelle...", "german": "Ich heiße..." },
-        { "id": 9, "english": "Where are you from?", "spanish": "¿De dónde eres?", "french": "D'où viens-tu ?", "german": "Woher kommst du?" },
-        { "id": 10, "english": "I'm from...", "spanish": "Soy de...", "french": "Je viens de...", "german": "Ich komme aus..." },
-        { "id": 11, "english": "How old are you?", "spanish": "¿Cuántos años tienes?", "french": "Quel âge as-tu ?", "german": "Wie alt bist du?" },
-        { "id": 12, "english": "I'm ... years old", "spanish": "Tengo ... años", "french": "J'ai ... ans", "german": "Ich bin ... Jahre alt" },
-        { "id": 13, "english": "Do you speak English?", "spanish": "¿Hablas inglés?", "french": "Parles-tu anglais ?", "german": "Sprichst du Englisch?" },
-        { "id": 14, "english": "I speak a little", "spanish": "Hablo un poco", "french": "Je parle un peu", "german": "Ich spreche ein wenig" },
-        { "id": 15, "english": "Can you repeat that?", "spanish": "¿Puedes repetir eso?", "french": "Peux-tu répéter ?", "german": "Kannst du das wiederholen?" },
-        { "id": 16, "english": "Please speak slowly", "spanish": "Por favor, habla despacio", "french": "Parle lentement, s'il te plaît", "german": "Bitte sprich langsam" },
-        { "id": 17, "english": "Thank you", "spanish": "Gracias", "french": "Merci", "german": "Danke" },
-        { "id": 18, "english": "You're welcome", "spanish": "De nada", "french": "De rien", "german": "Bitte schön" },
-        { "id": 19, "english": "Excuse me", "spanish": "Perdón", "french": "Excusez-moi", "german": "Entschuldigung" },
-        { "id": 20, "english": "I'm sorry", "spanish": "Lo siento", "french": "Je suis désolé", "german": "Es tut mir leid" },
-        { "id": 21, "english": "Yes", "spanish": "Sí", "french": "Oui", "german": "Ja" },
-        { "id": 22, "english": "No", "spanish": "No", "french": "Non", "german": "Nein" },
-        { "id": 23, "english": "Maybe", "spanish": "Quizás", "french": "Peut-être", "german": "Vielleicht" },
-        { "id": 24, "english": "See you later", "spanish": "Hasta luego", "french": "À plus tard", "german": "Bis später" },
-        { "id": 25, "english": "Goodbye", "spanish": "Adiós", "french": "Au revoir", "german": "Auf Wiedersehen" },
-        { "id": 26, "english": "Take care", "spanish": "Cuídate", "french": "Prends soin de toi", "german": "Mach's gut" },
-        { "id": 27, "english": "Welcome", "spanish": "Bienvenido", "french": "Bienvenue", "german": "Willkommen" },
-        { "id": 28, "english": "Congratulations", "spanish": "Felicidades", "french": "Félicitations", "german": "Herzlichen Glückwunsch" },
-        { "id": 29, "english": "Happy Birthday", "spanish": "Feliz cumpleaños", "french": "Joyeux anniversaire", "german": "Alles Gute zum Geburtstag" },
-        { "id": 30, "english": "Best wishes", "spanish": "Mejores deseos", "french": "Meilleurs vœux", "german": "Beste Wünsche" }
+        {
+          "id": 1,
+          "english": "Hello!",
+          "spanish": "¡Hola!",
+          "french": "Bonjour!",
+          "german": "Hallo!",
+          "audioFile": "/audio/spanish/greetingsintroductions/1_hello.mp3"
+        },
+        {
+          "id": 2,
+          "english": "Good morning",
+          "spanish": "Buenos días",
+          "french": "Bonjour",
+          "german": "Guten Morgen",
+          "audioFile": "/audio/spanish/greetingsintroductions/2_good_morning.mp3"
+        },
+        {
+          "id": 3,
+          "english": "Good evening",
+          "spanish": "Buenas tardes",
+          "french": "Bonsoir",
+          "german": "Guten Abend",
+          "audioFile": "/audio/spanish/greetingsintroductions/3_good_evening.mp3"
+        },
+        {
+          "id": 4,
+          "english": "Good night",
+          "spanish": "Buenas noches",
+          "french": "Bonne nuit",
+          "german": "Gute Nacht",
+          "audioFile": "/audio/spanish/greetingsintroductions/4_good_night.mp3"
+        },
+        {
+          "id": 5,
+          "english": "How are you?",
+          "spanish": "¿Cómo estás?",
+          "french": "Comment ça va ?",
+          "german": "Wie geht es dir?",
+          "audioFile": "/audio/spanish/greetingsintroductions/5_how_are_you.mp3"
+        },
+        {
+          "id": 6,
+          "english": "Nice to meet you",
+          "spanish": "Mucho gusto",
+          "french": "Enchanté",
+          "german": "Freut mich",
+          "audioFile": "/audio/spanish/greetingsintroductions/6_nice_to_meet_you.mp3"
+        },
+        {
+          "id": 7,
+          "english": "What's your name?",
+          "spanish": "¿Cómo te llamas?",
+          "french": "Comment tu t'appelles ?",
+          "german": "Wie heißt du?",
+          "audioFile": "/audio/spanish/greetingsintroductions/7_what_s_your_name.mp3"
+        },
+        {
+          "id": 8,
+          "english": "My name is...",
+          "spanish": "Me llamo...",
+          "french": "Je m'appelle...",
+          "german": "Ich heiße...",
+          "audioFile": "/audio/spanish/greetingsintroductions/8_my_name_is.mp3"
+        },
+        {
+          "id": 9,
+          "english": "Where are you from?",
+          "spanish": "¿De dónde eres?",
+          "french": "D'où viens-tu ?",
+          "german": "Woher kommst du?",
+          "audioFile": "/audio/spanish/greetingsintroductions/9_where_are_you_from.mp3"
+        },
+        {
+          "id": 10,
+          "english": "I'm from...",
+          "spanish": "Soy de...",
+          "french": "Je viens de...",
+          "german": "Ich komme aus...",
+          "audioFile": "/audio/spanish/greetingsintroductions/10_i_m_from.mp3"
+        },
+        {
+          "id": 11,
+          "english": "How old are you?",
+          "spanish": "¿Cuántos años tienes?",
+          "french": "Quel âge as-tu ?",
+          "german": "Wie alt bist du?",
+          "audioFile": "/audio/spanish/greetingsintroductions/11_how_old_are_you.mp3"
+        },
+        {
+          "id": 12,
+          "english": "I'm ... years old",
+          "spanish": "Tengo ... años",
+          "french": "J'ai ... ans",
+          "german": "Ich bin ... Jahre alt",
+          "audioFile": "/audio/spanish/greetingsintroductions/12_i_m_years_old.mp3"
+        },
+        {
+          "id": 13,
+          "english": "Do you speak English?",
+          "spanish": "¿Hablas inglés?",
+          "french": "Parles-tu anglais ?",
+          "german": "Sprichst du Englisch?",
+          "audioFile": "/audio/spanish/greetingsintroductions/13_do_you_speak_english.mp3"
+        },
+        {
+          "id": 14,
+          "english": "I speak a little",
+          "spanish": "Hablo un poco",
+          "french": "Je parle un peu",
+          "german": "Ich spreche ein wenig",
+          "audioFile": "/audio/spanish/greetingsintroductions/14_i_speak_a_little.mp3"
+        },
+        {
+          "id": 15,
+          "english": "Can you repeat that?",
+          "spanish": "¿Puedes repetir eso?",
+          "french": "Peux-tu répéter ?",
+          "german": "Kannst du das wiederholen?",
+          "audioFile": "/audio/spanish/greetingsintroductions/15_can_you_repeat_that.mp3"
+        },
+        {
+          "id": 16,
+          "english": "Please speak slowly",
+          "spanish": "Por favor, habla despacio",
+          "french": "Parle lentement, s'il te plaît",
+          "german": "Bitte sprich langsam",
+          "audioFile": "/audio/spanish/greetingsintroductions/16_please_speak_slowly.mp3"
+        },
+        {
+          "id": 17,
+          "english": "Thank you",
+          "spanish": "Gracias",
+          "french": "Merci",
+          "german": "Danke",
+          "audioFile": "/audio/spanish/greetingsintroductions/17_thank_you.mp3"
+        },
+        {
+          "id": 18,
+          "english": "You're welcome",
+          "spanish": "De nada",
+          "french": "De rien",
+          "german": "Bitte schön",
+          "audioFile": "/audio/spanish/greetingsintroductions/18_you_re_welcome.mp3"
+        },
+        {
+          "id": 19,
+          "english": "Excuse me",
+          "spanish": "Perdón",
+          "french": "Excusez-moi",
+          "german": "Entschuldigung",
+          "audioFile": "/audio/spanish/greetingsintroductions/19_excuse_me.mp3"
+        },
+        {
+          "id": 20,
+          "english": "I'm sorry",
+          "spanish": "Lo siento",
+          "french": "Je suis désolé",
+          "german": "Es tut mir leid",
+          "audioFile": "/audio/spanish/greetingsintroductions/20_i_m_sorry.mp3"
+        },
+        {
+          "id": 21,
+          "english": "Yes",
+          "spanish": "Sí",
+          "french": "Oui",
+          "german": "Ja",
+          "audioFile": "/audio/spanish/greetingsintroductions/21_yes.mp3"
+        },
+        {
+          "id": 22,
+          "english": "No",
+          "spanish": "No",
+          "french": "Non",
+          "german": "Nein",
+          "audioFile": "/audio/spanish/greetingsintroductions/22_no.mp3"
+        },
+        {
+          "id": 23,
+          "english": "Maybe",
+          "spanish": "Quizás",
+          "french": "Peut-être",
+          "german": "Vielleicht",
+          "audioFile": "/audio/spanish/greetingsintroductions/23_maybe.mp3"
+        },
+        {
+          "id": 24,
+          "english": "See you later",
+          "spanish": "Hasta luego",
+          "french": "À plus tard",
+          "german": "Bis später",
+          "audioFile": "/audio/spanish/greetingsintroductions/24_see_you_later.mp3"
+        },
+        {
+          "id": 25,
+          "english": "Goodbye",
+          "spanish": "Adiós",
+          "french": "Au revoir",
+          "german": "Auf Wiedersehen",
+          "audioFile": "/audio/spanish/greetingsintroductions/25_goodbye.mp3"
+        },
+        {
+          "id": 26,
+          "english": "Take care",
+          "spanish": "Cuídate",
+          "french": "Prends soin de toi",
+          "german": "Mach's gut",
+          "audioFile": "/audio/spanish/greetingsintroductions/26_take_care.mp3"
+        },
+        {
+          "id": 27,
+          "english": "Welcome",
+          "spanish": "Bienvenido",
+          "french": "Bienvenue",
+          "german": "Willkommen",
+          "audioFile": "/audio/spanish/greetingsintroductions/27_welcome.mp3"
+        },
+        {
+          "id": 28,
+          "english": "Congratulations",
+          "spanish": "Felicidades",
+          "french": "Félicitations",
+          "german": "Herzlichen Glückwunsch",
+          "audioFile": "/audio/spanish/greetingsintroductions/28_congratulations.mp3"
+        },
+        {
+          "id": 29,
+          "english": "Happy Birthday",
+          "spanish": "Feliz cumpleaños",
+          "french": "Joyeux anniversaire",
+          "german": "Alles Gute zum Geburtstag",
+          "audioFile": "/audio/spanish/greetingsintroductions/29_happy_birthday.mp3"
+        },
+        {
+          "id": 30,
+          "english": "Best wishes",
+          "spanish": "Mejores deseos",
+          "french": "Meilleurs vœux",
+          "german": "Beste Wünsche",
+          "audioFile": "/audio/spanish/greetingsintroductions/30_best_wishes.mp3"
+        }
       ]
     },
     {
       "name": "Travel & Directions",
       "phrases": [
-        { "id": 31, "english": "Where is the bus station?", "spanish": "¿Dónde está la estación de autobuses?", "french": "Où est la gare routière ?", "german": "Wo ist der Busbahnhof?" },
-        { "id": 32, "english": "Where is the train station?", "spanish": "¿Dónde está la estación de tren?", "french": "Où est la gare ?", "german": "Wo ist der Bahnhof?" },
-        { "id": 33, "english": "Where is the airport?", "spanish": "¿Dónde está el aeropuerto?", "french": "Où est l'aéroport ?", "german": "Wo ist der Flughafen?" },
-        { "id": 34, "english": "How do I get to the city center?", "spanish": "¿Cómo llego al centro?", "french": "Comment aller au centre-ville ?", "german": "Wie komme ich ins Stadtzentrum?" },
-        { "id": 35, "english": "Is it far from here?", "spanish": "¿Está lejos de aquí?", "french": "C'est loin d'ici ?", "german": "Ist es weit von hier?" },
-        { "id": 36, "english": "How much is a ticket?", "spanish": "¿Cuánto cuesta un billete?", "french": "Combien coûte un billet ?", "german": "Wie viel kostet ein Ticket?" },
-        { "id": 37, "english": "I need a taxi", "spanish": "Necesito un taxi", "french": "J'ai besoin d'un taxi", "german": "Ich brauche ein Taxi" },
-        { "id": 38, "english": "Can you call a taxi?", "spanish": "¿Puede llamar un taxi?", "french": "Pouvez-vous appeler un taxi ?", "german": "Können Sie ein Taxi rufen?" },
-        { "id": 39, "english": "How long does it take?", "spanish": "¿Cuánto tiempo tarda?", "french": "Combien de temps ça prend ?", "german": "Wie lange dauert es?" },
-        { "id": 40, "english": "Is there a map?", "spanish": "¿Hay un mapa?", "french": "Y a-t-il une carte ?", "german": "Gibt es eine Karte?" },
-        { "id": 41, "english": "Left", "spanish": "Izquierda", "french": "Gauche", "german": "Links" },
-        { "id": 42, "english": "Right", "spanish": "Derecha", "french": "Droite", "german": "Rechts" },
-        { "id": 43, "english": "Straight ahead", "spanish": "Todo recto", "french": "Tout droit", "german": "Geradeaus" },
-        { "id": 44, "english": "Turn left", "spanish": "Gira a la izquierda", "french": "Tournez à gauche", "german": "Biegen Sie links ab" },
-        { "id": 45, "english": "Turn right", "spanish": "Gira a la derecha", "french": "Tournez à droite", "german": "Biegen Sie rechts ab" },
-        { "id": 46, "english": "Stop here, please", "spanish": "Pare aquí, por favor", "french": "Arrêtez-vous ici, s'il vous plaît", "german": "Halten Sie hier, bitte" },
-        { "id": 47, "english": "Is there parking?", "spanish": "¿Hay aparcamiento?", "french": "Y a-t-il un parking ?", "german": "Gibt es Parkplätze?" },
-        { "id": 48, "english": "I am lost", "spanish": "Estoy perdido", "french": "Je suis perdu", "german": "Ich habe mich verlaufen" },
-        { "id": 49, "english": "Can you show me on the map?", "spanish": "¿Puede mostrarme en el mapa?", "french": "Pouvez-vous me montrer sur la carte ?", "german": "Können Sie es mir auf der Karte zeigen?" },
-        { "id": 50, "english": "Which bus goes to...?", "spanish": "¿Qué autobús va a...?", "french": "Quel bus va à...?", "german": "Welcher Bus fährt nach...?" },
-        { "id": 51, "english": "Is this seat taken?", "spanish": "¿Está ocupado este asiento?", "french": "Ce siège est-il pris ?", "german": "Ist dieser Platz besetzt?" },
-        { "id": 52, "english": "What time does it leave?", "spanish": "¿A qué hora sale?", "french": "À quelle heure part-il ?", "german": "Wann fährt es ab?" },
-        { "id": 53, "english": "What time does it arrive?", "spanish": "¿A qué hora llega?", "french": "À quelle heure arrive-t-il ?", "german": "Wann kommt es an?" },
-        { "id": 54, "english": "Is there Wi-Fi?", "spanish": "¿Hay Wi-Fi?", "french": "Y a-t-il du Wi-Fi ?", "german": "Gibt es WLAN?" },
-        { "id": 55, "english": "Can I buy a ticket here?", "spanish": "¿Puedo comprar un billete aquí?", "french": "Puis-je acheter un billet ici ?", "german": "Kann ich hier ein Ticket kaufen?" },
-        { "id": 56, "english": "How much is the fare?", "spanish": "¿Cuánto cuesta el pasaje?", "french": "Quel est le tarif ?", "german": "Wie viel kostet die Fahrt?" },
-        { "id": 57, "english": "Is this the right way?", "spanish": "¿Es este el camino correcto?", "french": "Est-ce le bon chemin ?", "german": "Ist das der richtige Weg?" },
-        { "id": 58, "english": "How do I get to...?", "spanish": "¿Cómo llego a...?", "french": "Comment aller à...?", "german": "Wie komme ich zu...?" },
-        { "id": 59, "english": "Is there a restroom nearby?", "spanish": "¿Hay un baño cerca?", "french": "Y a-t-il des toilettes près d'ici ?", "german": "Gibt es hier in der Nähe eine Toilette?" },
-        { "id": 60, "english": "Can you help me?", "spanish": "¿Puede ayudarme?", "french": "Pouvez-vous m'aider ?", "german": "Können Sie mir helfen?" }
+        {
+          "id": 31,
+          "english": "Where is the bus station?",
+          "spanish": "¿Dónde está la estación de autobuses?",
+          "french": "Où est la gare routière ?",
+          "german": "Wo ist der Busbahnhof?",
+          "audioFile": "/audio/spanish/traveldirections/31_where_is_the_bus_station.mp3"
+        },
+        {
+          "id": 32,
+          "english": "Where is the train station?",
+          "spanish": "¿Dónde está la estación de tren?",
+          "french": "Où est la gare ?",
+          "german": "Wo ist der Bahnhof?",
+          "audioFile": "/audio/spanish/traveldirections/32_where_is_the_train_station.mp3"
+        },
+        {
+          "id": 33,
+          "english": "Where is the airport?",
+          "spanish": "¿Dónde está el aeropuerto?",
+          "french": "Où est l'aéroport ?",
+          "german": "Wo ist der Flughafen?",
+          "audioFile": "/audio/spanish/traveldirections/33_where_is_the_airport.mp3"
+        },
+        {
+          "id": 34,
+          "english": "How do I get to the city center?",
+          "spanish": "¿Cómo llego al centro?",
+          "french": "Comment aller au centre-ville ?",
+          "german": "Wie komme ich ins Stadtzentrum?",
+          "audioFile": "/audio/spanish/traveldirections/34_how_do_i_get_to_the_city_center.mp3"
+        },
+        {
+          "id": 35,
+          "english": "Is it far from here?",
+          "spanish": "¿Está lejos de aquí?",
+          "french": "C'est loin d'ici ?",
+          "german": "Ist es weit von hier?",
+          "audioFile": "/audio/spanish/traveldirections/35_is_it_far_from_here.mp3"
+        },
+        {
+          "id": 36,
+          "english": "How much is a ticket?",
+          "spanish": "¿Cuánto cuesta un billete?",
+          "french": "Combien coûte un billet ?",
+          "german": "Wie viel kostet ein Ticket?",
+          "audioFile": "/audio/spanish/traveldirections/36_how_much_is_a_ticket.mp3"
+        },
+        {
+          "id": 37,
+          "english": "I need a taxi",
+          "spanish": "Necesito un taxi",
+          "french": "J'ai besoin d'un taxi",
+          "german": "Ich brauche ein Taxi",
+          "audioFile": "/audio/spanish/traveldirections/37_i_need_a_taxi.mp3"
+        },
+        {
+          "id": 38,
+          "english": "Can you call a taxi?",
+          "spanish": "¿Puede llamar un taxi?",
+          "french": "Pouvez-vous appeler un taxi ?",
+          "german": "Können Sie ein Taxi rufen?",
+          "audioFile": "/audio/spanish/traveldirections/38_can_you_call_a_taxi.mp3"
+        },
+        {
+          "id": 39,
+          "english": "How long does it take?",
+          "spanish": "¿Cuánto tiempo tarda?",
+          "french": "Combien de temps ça prend ?",
+          "german": "Wie lange dauert es?",
+          "audioFile": "/audio/spanish/traveldirections/39_how_long_does_it_take.mp3"
+        },
+        {
+          "id": 40,
+          "english": "Is there a map?",
+          "spanish": "¿Hay un mapa?",
+          "french": "Y a-t-il une carte ?",
+          "german": "Gibt es eine Karte?",
+          "audioFile": "/audio/spanish/traveldirections/40_is_there_a_map.mp3"
+        },
+        {
+          "id": 41,
+          "english": "Left",
+          "spanish": "Izquierda",
+          "french": "Gauche",
+          "german": "Links",
+          "audioFile": "/audio/spanish/traveldirections/41_left.mp3"
+        },
+        {
+          "id": 42,
+          "english": "Right",
+          "spanish": "Derecha",
+          "french": "Droite",
+          "german": "Rechts",
+          "audioFile": "/audio/spanish/traveldirections/42_right.mp3"
+        },
+        {
+          "id": 43,
+          "english": "Straight ahead",
+          "spanish": "Todo recto",
+          "french": "Tout droit",
+          "german": "Geradeaus",
+          "audioFile": "/audio/spanish/traveldirections/43_straight_ahead.mp3"
+        },
+        {
+          "id": 44,
+          "english": "Turn left",
+          "spanish": "Gira a la izquierda",
+          "french": "Tournez à gauche",
+          "german": "Biegen Sie links ab",
+          "audioFile": "/audio/spanish/traveldirections/44_turn_left.mp3"
+        },
+        {
+          "id": 45,
+          "english": "Turn right",
+          "spanish": "Gira a la derecha",
+          "french": "Tournez à droite",
+          "german": "Biegen Sie rechts ab",
+          "audioFile": "/audio/spanish/traveldirections/45_turn_right.mp3"
+        },
+        {
+          "id": 46,
+          "english": "Stop here, please",
+          "spanish": "Pare aquí, por favor",
+          "french": "Arrêtez-vous ici, s'il vous plaît",
+          "german": "Halten Sie hier, bitte",
+          "audioFile": "/audio/spanish/traveldirections/46_stop_here_please.mp3"
+        },
+        {
+          "id": 47,
+          "english": "Is there parking?",
+          "spanish": "¿Hay aparcamiento?",
+          "french": "Y a-t-il un parking ?",
+          "german": "Gibt es Parkplätze?",
+          "audioFile": "/audio/spanish/traveldirections/47_is_there_parking.mp3"
+        },
+        {
+          "id": 48,
+          "english": "I am lost",
+          "spanish": "Estoy perdido",
+          "french": "Je suis perdu",
+          "german": "Ich habe mich verlaufen",
+          "audioFile": "/audio/spanish/traveldirections/48_i_am_lost.mp3"
+        },
+        {
+          "id": 49,
+          "english": "Can you show me on the map?",
+          "spanish": "¿Puede mostrarme en el mapa?",
+          "french": "Pouvez-vous me montrer sur la carte ?",
+          "german": "Können Sie es mir auf der Karte zeigen?",
+          "audioFile": "/audio/spanish/traveldirections/49_can_you_show_me_on_the_map.mp3"
+        },
+        {
+          "id": 50,
+          "english": "Which bus goes to...?",
+          "spanish": "¿Qué autobús va a...?",
+          "french": "Quel bus va à...?",
+          "german": "Welcher Bus fährt nach...?",
+          "audioFile": "/audio/spanish/traveldirections/50_which_bus_goes_to.mp3"
+        },
+        {
+          "id": 51,
+          "english": "Is this seat taken?",
+          "spanish": "¿Está ocupado este asiento?",
+          "french": "Ce siège est-il pris ?",
+          "german": "Ist dieser Platz besetzt?",
+          "audioFile": "/audio/spanish/traveldirections/51_is_this_seat_taken.mp3"
+        },
+        {
+          "id": 52,
+          "english": "What time does it leave?",
+          "spanish": "¿A qué hora sale?",
+          "french": "À quelle heure part-il ?",
+          "german": "Wann fährt es ab?",
+          "audioFile": "/audio/spanish/traveldirections/52_what_time_does_it_leave.mp3"
+        },
+        {
+          "id": 53,
+          "english": "What time does it arrive?",
+          "spanish": "¿A qué hora llega?",
+          "french": "À quelle heure arrive-t-il ?",
+          "german": "Wann kommt es an?",
+          "audioFile": "/audio/spanish/traveldirections/53_what_time_does_it_arrive.mp3"
+        },
+        {
+          "id": 54,
+          "english": "Is there Wi-Fi?",
+          "spanish": "¿Hay Wi-Fi?",
+          "french": "Y a-t-il du Wi-Fi ?",
+          "german": "Gibt es WLAN?",
+          "audioFile": "/audio/spanish/traveldirections/54_is_there_wi_fi.mp3"
+        },
+        {
+          "id": 55,
+          "english": "Can I buy a ticket here?",
+          "spanish": "¿Puedo comprar un billete aquí?",
+          "french": "Puis-je acheter un billet ici ?",
+          "german": "Kann ich hier ein Ticket kaufen?",
+          "audioFile": "/audio/spanish/traveldirections/55_can_i_buy_a_ticket_here.mp3"
+        },
+        {
+          "id": 56,
+          "english": "How much is the fare?",
+          "spanish": "¿Cuánto cuesta el pasaje?",
+          "french": "Quel est le tarif ?",
+          "german": "Wie viel kostet die Fahrt?",
+          "audioFile": "/audio/spanish/traveldirections/56_how_much_is_the_fare.mp3"
+        },
+        {
+          "id": 57,
+          "english": "Is this the right way?",
+          "spanish": "¿Es este el camino correcto?",
+          "french": "Est-ce le bon chemin ?",
+          "german": "Ist das der richtige Weg?",
+          "audioFile": "/audio/spanish/traveldirections/57_is_this_the_right_way.mp3"
+        },
+        {
+          "id": 58,
+          "english": "How do I get to...?",
+          "spanish": "¿Cómo llego a...?",
+          "french": "Comment aller à...?",
+          "german": "Wie komme ich zu...?",
+          "audioFile": "/audio/spanish/traveldirections/58_how_do_i_get_to.mp3"
+        },
+        {
+          "id": 59,
+          "english": "Is there a restroom nearby?",
+          "spanish": "¿Hay un baño cerca?",
+          "french": "Y a-t-il des toilettes près d'ici ?",
+          "german": "Gibt es hier in der Nähe eine Toilette?",
+          "audioFile": "/audio/spanish/traveldirections/59_is_there_a_restroom_nearby.mp3"
+        },
+        {
+          "id": 60,
+          "english": "Can you help me?",
+          "spanish": "¿Puede ayudarme?",
+          "french": "Pouvez-vous m'aider ?",
+          "german": "Können Sie mir helfen?",
+          "audioFile": "/audio/spanish/traveldirections/60_can_you_help_me.mp3"
+        }
       ]
     },
     {
       "name": "Food & Dining",
       "phrases": [
-        { "id": 61, "english": "I'm hungry", "spanish": "Tengo hambre", "french": "J'ai faim", "german": "Ich habe Hunger" },
-        { "id": 62, "english": "I'm thirsty", "spanish": "Tengo sed", "french": "J'ai soif", "german": "Ich habe Durst" },
-        { "id": 63, "english": "Can I see the menu?", "spanish": "¿Puedo ver el menú?", "french": "Puis-je voir le menu ?", "german": "Kann ich die Speisekarte sehen?" },
-        { "id": 64, "english": "What do you recommend?", "spanish": "¿Qué recomienda?", "french": "Que recommandez-vous ?", "german": "Was empfehlen Sie?" },
-        { "id": 65, "english": "I would like...", "spanish": "Quisiera...", "french": "Je voudrais...", "german": "Ich hätte gerne..." },
-        { "id": 66, "english": "The bill, please", "spanish": "La cuenta, por favor", "french": "L'addition, s'il vous plaît", "german": "Die Rechnung, bitte" },
-        { "id": 67, "english": "A table for two, please", "spanish": "Una mesa para dos, por favor", "french": "Une table pour deux, s'il vous plaît", "german": "Ein Tisch für zwei, bitte" },
-        { "id": 68, "english": "Do you have vegetarian options?", "spanish": "¿Tiene opciones vegetarianas?", "french": "Avez-vous des options végétariennes ?", "german": "Haben Sie vegetarische Gerichte?" },
-        { "id": 69, "english": "No meat, please", "spanish": "Sin carne, por favor", "french": "Pas de viande, s'il vous plaît", "german": "Kein Fleisch, bitte" },
-        { "id": 70, "english": "I'm allergic to...", "spanish": "Soy alérgico a...", "french": "Je suis allergique à...", "german": "Ich bin allergisch gegen..." },
-        { "id": 71, "english": "Is this spicy?", "spanish": "¿Esto es picante?", "french": "C'est épicé ?", "german": "Ist das scharf?" },
-        { "id": 72, "english": "Can I have water?", "spanish": "¿Puedo tener agua?", "french": "Puis-je avoir de l'eau ?", "german": "Kann ich Wasser haben?" },
-        { "id": 73, "english": "Cheers!", "spanish": "¡Salud!", "french": "Santé !", "german": "Prost!" },
-        { "id": 74, "english": "Delicious!", "spanish": "¡Delicioso!", "french": "Délicieux!", "german": "Lecker!" },
-        { "id": 75, "english": "Bon appétit", "spanish": "Buen provecho", "french": "Bon appétit", "german": "Guten Appetit" },
-        { "id": 76, "english": "Can I have the recipe?", "spanish": "¿Puedo tener la receta?", "french": "Puis-je avoir la recette ?", "german": "Kann ich das Rezept haben?" },
-        { "id": 77, "english": "I don't eat...", "spanish": "No como...", "french": "Je ne mange pas...", "german": "Ich esse kein..." },
-        { "id": 78, "english": "Is service included?", "spanish": "¿Está incluido el servicio?", "french": "Le service est-il inclus ?", "german": "Ist der Service inbegriffen?" },
-        { "id": 79, "english": "Can I pay by card?", "spanish": "¿Puedo pagar con tarjeta?", "french": "Puis-je payer par carte ?", "german": "Kann ich mit Karte zahlen?" },
-        { "id": 80, "english": "Do you have Wi-Fi?", "spanish": "¿Tiene Wi-Fi?", "french": "Avez-vous du Wi-Fi ?", "german": "Haben Sie WLAN?" },
-        { "id": 81, "english": "What is the soup of the day?", "spanish": "¿Cuál es la sopa del día?", "french": "Quelle est la soupe du jour ?", "german": "Was ist die Suppe des Tages?" },
-        { "id": 82, "english": "Can I have dessert?", "spanish": "¿Puedo tener postre?", "french": "Puis-je avoir un dessert ?", "german": "Kann ich Nachtisch haben?" },
-        { "id": 83, "english": "Is there a kids' menu?", "spanish": "¿Hay menú infantil?", "french": "Y a-t-il un menu enfant ?", "german": "Gibt es ein Kindermenü?" },
-        { "id": 84, "english": "Can I have a coffee?", "spanish": "¿Puedo tomar un café?", "french": "Puis-je avoir un café ?", "german": "Kann ich einen Kaffee haben?" },
-        { "id": 85, "english": "Is this gluten-free?", "spanish": "¿Esto es sin gluten?", "french": "C'est sans gluten ?", "german": "Ist das glutenfrei?" },
-        { "id": 86, "english": "Can I have a beer?", "spanish": "¿Puedo tomar una cerveza?", "french": "Puis-je avoir une bière ?", "german": "Kann ich ein Bier haben?" },
-        { "id": 87, "english": "Is there a table available?", "spanish": "¿Hay una mesa disponible?", "french": "Y a-t-il une table disponible ?", "german": "Gibt es einen freien Tisch?" },
-        { "id": 88, "english": "How long is the wait?", "spanish": "¿Cuánto hay que esperar?", "french": "Combien de temps d'attente ?", "german": "Wie lange ist die Wartezeit?" },
-        { "id": 89, "english": "Can I get this to go?", "spanish": "¿Puedo llevar esto para llevar?", "french": "Puis-je l'emporter ?", "german": "Kann ich das zum Mitnehmen haben?" },
-        { "id": 90, "english": "Do you have vegan options?", "spanish": "¿Tiene opciones veganas?", "french": "Avez-vous des options véganes ?", "german": "Haben Sie vegane Gerichte?" }
+        {
+          "id": 61,
+          "english": "I'm hungry",
+          "spanish": "Tengo hambre",
+          "french": "J'ai faim",
+          "german": "Ich habe Hunger",
+          "audioFile": "/audio/spanish/fooddining/61_i_m_hungry.mp3"
+        },
+        {
+          "id": 62,
+          "english": "I'm thirsty",
+          "spanish": "Tengo sed",
+          "french": "J'ai soif",
+          "german": "Ich habe Durst",
+          "audioFile": "/audio/spanish/fooddining/62_i_m_thirsty.mp3"
+        },
+        {
+          "id": 63,
+          "english": "Can I see the menu?",
+          "spanish": "¿Puedo ver el menú?",
+          "french": "Puis-je voir le menu ?",
+          "german": "Kann ich die Speisekarte sehen?",
+          "audioFile": "/audio/spanish/fooddining/63_can_i_see_the_menu.mp3"
+        },
+        {
+          "id": 64,
+          "english": "What do you recommend?",
+          "spanish": "¿Qué recomienda?",
+          "french": "Que recommandez-vous ?",
+          "german": "Was empfehlen Sie?",
+          "audioFile": "/audio/spanish/fooddining/64_what_do_you_recommend.mp3"
+        },
+        {
+          "id": 65,
+          "english": "I would like...",
+          "spanish": "Quisiera...",
+          "french": "Je voudrais...",
+          "german": "Ich hätte gerne...",
+          "audioFile": "/audio/spanish/fooddining/65_i_would_like.mp3"
+        },
+        {
+          "id": 66,
+          "english": "The bill, please",
+          "spanish": "La cuenta, por favor",
+          "french": "L'addition, s'il vous plaît",
+          "german": "Die Rechnung, bitte",
+          "audioFile": "/audio/spanish/fooddining/66_the_bill_please.mp3"
+        },
+        {
+          "id": 67,
+          "english": "A table for two, please",
+          "spanish": "Una mesa para dos, por favor",
+          "french": "Une table pour deux, s'il vous plaît",
+          "german": "Ein Tisch für zwei, bitte",
+          "audioFile": "/audio/spanish/fooddining/67_a_table_for_two_please.mp3"
+        },
+        {
+          "id": 68,
+          "english": "Do you have vegetarian options?",
+          "spanish": "¿Tiene opciones vegetarianas?",
+          "french": "Avez-vous des options végétariennes ?",
+          "german": "Haben Sie vegetarische Gerichte?",
+          "audioFile": "/audio/spanish/fooddining/68_do_you_have_vegetarian_options.mp3"
+        },
+        {
+          "id": 69,
+          "english": "No meat, please",
+          "spanish": "Sin carne, por favor",
+          "french": "Pas de viande, s'il vous plaît",
+          "german": "Kein Fleisch, bitte",
+          "audioFile": "/audio/spanish/fooddining/69_no_meat_please.mp3"
+        },
+        {
+          "id": 70,
+          "english": "I'm allergic to...",
+          "spanish": "Soy alérgico a...",
+          "french": "Je suis allergique à...",
+          "german": "Ich bin allergisch gegen...",
+          "audioFile": "/audio/spanish/fooddining/70_i_m_allergic_to.mp3"
+        },
+        {
+          "id": 71,
+          "english": "Is this spicy?",
+          "spanish": "¿Esto es picante?",
+          "french": "C'est épicé ?",
+          "german": "Ist das scharf?",
+          "audioFile": "/audio/spanish/fooddining/71_is_this_spicy.mp3"
+        },
+        {
+          "id": 72,
+          "english": "Can I have water?",
+          "spanish": "¿Puedo tener agua?",
+          "french": "Puis-je avoir de l'eau ?",
+          "german": "Kann ich Wasser haben?",
+          "audioFile": "/audio/spanish/fooddining/72_can_i_have_water.mp3"
+        },
+        {
+          "id": 73,
+          "english": "Cheers!",
+          "spanish": "¡Salud!",
+          "french": "Santé !",
+          "german": "Prost!",
+          "audioFile": "/audio/spanish/fooddining/73_cheers.mp3"
+        },
+        {
+          "id": 74,
+          "english": "Delicious!",
+          "spanish": "¡Delicioso!",
+          "french": "Délicieux!",
+          "german": "Lecker!",
+          "audioFile": "/audio/spanish/fooddining/74_delicious.mp3"
+        },
+        {
+          "id": 75,
+          "english": "Bon appétit",
+          "spanish": "Buen provecho",
+          "french": "Bon appétit",
+          "german": "Guten Appetit",
+          "audioFile": "/audio/spanish/fooddining/75_bon_app_tit.mp3"
+        },
+        {
+          "id": 76,
+          "english": "Can I have the recipe?",
+          "spanish": "¿Puedo tener la receta?",
+          "french": "Puis-je avoir la recette ?",
+          "german": "Kann ich das Rezept haben?",
+          "audioFile": "/audio/spanish/fooddining/76_can_i_have_the_recipe.mp3"
+        },
+        {
+          "id": 77,
+          "english": "I don't eat...",
+          "spanish": "No como...",
+          "french": "Je ne mange pas...",
+          "german": "Ich esse kein...",
+          "audioFile": "/audio/spanish/fooddining/77_i_don_t_eat.mp3"
+        },
+        {
+          "id": 78,
+          "english": "Is service included?",
+          "spanish": "¿Está incluido el servicio?",
+          "french": "Le service est-il inclus ?",
+          "german": "Ist der Service inbegriffen?",
+          "audioFile": "/audio/spanish/fooddining/78_is_service_included.mp3"
+        },
+        {
+          "id": 79,
+          "english": "Can I pay by card?",
+          "spanish": "¿Puedo pagar con tarjeta?",
+          "french": "Puis-je payer par carte ?",
+          "german": "Kann ich mit Karte zahlen?",
+          "audioFile": "/audio/spanish/fooddining/79_can_i_pay_by_card.mp3"
+        },
+        {
+          "id": 80,
+          "english": "Do you have Wi-Fi?",
+          "spanish": "¿Tiene Wi-Fi?",
+          "french": "Avez-vous du Wi-Fi ?",
+          "german": "Haben Sie WLAN?",
+          "audioFile": "/audio/spanish/fooddining/80_do_you_have_wi_fi.mp3"
+        },
+        {
+          "id": 81,
+          "english": "What is the soup of the day?",
+          "spanish": "¿Cuál es la sopa del día?",
+          "french": "Quelle est la soupe du jour ?",
+          "german": "Was ist die Suppe des Tages?",
+          "audioFile": "/audio/spanish/fooddining/81_what_is_the_soup_of_the_day.mp3"
+        },
+        {
+          "id": 82,
+          "english": "Can I have dessert?",
+          "spanish": "¿Puedo tener postre?",
+          "french": "Puis-je avoir un dessert ?",
+          "german": "Kann ich Nachtisch haben?",
+          "audioFile": "/audio/spanish/fooddining/82_can_i_have_dessert.mp3"
+        },
+        {
+          "id": 83,
+          "english": "Is there a kids' menu?",
+          "spanish": "¿Hay menú infantil?",
+          "french": "Y a-t-il un menu enfant ?",
+          "german": "Gibt es ein Kindermenü?",
+          "audioFile": "/audio/spanish/fooddining/83_is_there_a_kids_menu.mp3"
+        },
+        {
+          "id": 84,
+          "english": "Can I have a coffee?",
+          "spanish": "¿Puedo tomar un café?",
+          "french": "Puis-je avoir un café ?",
+          "german": "Kann ich einen Kaffee haben?",
+          "audioFile": "/audio/spanish/fooddining/84_can_i_have_a_coffee.mp3"
+        },
+        {
+          "id": 85,
+          "english": "Is this gluten-free?",
+          "spanish": "¿Esto es sin gluten?",
+          "french": "C'est sans gluten ?",
+          "german": "Ist das glutenfrei?",
+          "audioFile": "/audio/spanish/fooddining/85_is_this_gluten_free.mp3"
+        },
+        {
+          "id": 86,
+          "english": "Can I have a beer?",
+          "spanish": "¿Puedo tomar una cerveza?",
+          "french": "Puis-je avoir une bière ?",
+          "german": "Kann ich ein Bier haben?",
+          "audioFile": "/audio/spanish/fooddining/86_can_i_have_a_beer.mp3"
+        },
+        {
+          "id": 87,
+          "english": "Is there a table available?",
+          "spanish": "¿Hay una mesa disponible?",
+          "french": "Y a-t-il une table disponible ?",
+          "german": "Gibt es einen freien Tisch?",
+          "audioFile": "/audio/spanish/fooddining/87_is_there_a_table_available.mp3"
+        },
+        {
+          "id": 88,
+          "english": "How long is the wait?",
+          "spanish": "¿Cuánto hay que esperar?",
+          "french": "Combien de temps d'attente ?",
+          "german": "Wie lange ist die Wartezeit?",
+          "audioFile": "/audio/spanish/fooddining/88_how_long_is_the_wait.mp3"
+        },
+        {
+          "id": 89,
+          "english": "Can I get this to go?",
+          "spanish": "¿Puedo llevar esto para llevar?",
+          "french": "Puis-je l'emporter ?",
+          "german": "Kann ich das zum Mitnehmen haben?",
+          "audioFile": "/audio/spanish/fooddining/89_can_i_get_this_to_go.mp3"
+        },
+        {
+          "id": 90,
+          "english": "Do you have vegan options?",
+          "spanish": "¿Tiene opciones veganas?",
+          "french": "Avez-vous des options véganes ?",
+          "german": "Haben Sie vegane Gerichte?",
+          "audioFile": "/audio/spanish/fooddining/90_do_you_have_vegan_options.mp3"
+        }
       ]
     },
     {
       "name": "Emergencies & Health",
       "phrases": [
-        { "id": 91, "english": "Help!", "spanish": "¡Ayuda!", "french": "À l'aide !", "german": "Hilfe!" },
-        { "id": 92, "english": "Call the police", "spanish": "Llame a la policía", "french": "Appelez la police", "german": "Rufen Sie die Polizei" },
-        { "id": 93, "english": "Call an ambulance", "spanish": "Llame a una ambulancia", "french": "Appelez une ambulance", "german": "Rufen Sie einen Krankenwagen" },
-        { "id": 94, "english": "I need a doctor", "spanish": "Necesito un médico", "french": "J'ai besoin d'un médecin", "german": "Ich brauche einen Arzt" },
-        { "id": 95, "english": "It's an emergency", "spanish": "Es una emergencia", "french": "C'est une urgence", "german": "Es ist ein Notfall" },
-        { "id": 96, "english": "I feel sick", "spanish": "Me siento mal", "french": "Je me sens mal", "german": "Mir ist schlecht" },
-        { "id": 97, "english": "I have a fever", "spanish": "Tengo fiebre", "french": "J'ai de la fièvre", "german": "Ich habe Fieber" },
-        { "id": 98, "english": "I have pain here", "spanish": "Me duele aquí", "french": "J'ai mal ici", "german": "Es tut hier weh" },
-        { "id": 99, "english": "I am allergic to...", "spanish": "Soy alérgico a...", "french": "Je suis allergique à...", "german": "Ich bin allergisch gegen..." },
-        { "id": 100, "english": "I need medicine", "spanish": "Necesito medicina", "french": "J'ai besoin de médicaments", "german": "Ich brauche Medizin" },
-        { "id": 101, "english": "Where is the hospital?", "spanish": "¿Dónde está el hospital?", "french": "Où est l'hôpital ?", "german": "Wo ist das Krankenhaus?" },
-        { "id": 102, "english": "Where is the pharmacy?", "spanish": "¿Dónde está la farmacia?", "french": "Où est la pharmacie ?", "german": "Wo ist die Apotheke?" },
-        { "id": 103, "english": "I lost my passport", "spanish": "Perdí mi pasaporte", "french": "J'ai perdu mon passeport", "german": "Ich habe meinen Pass verloren" },
-        { "id": 104, "english": "My phone was stolen", "spanish": "Me robaron el móvil", "french": "On m'a volé mon téléphone", "german": "Mein Handy wurde gestohlen" },
-        { "id": 105, "english": "I don't feel safe", "spanish": "No me siento seguro", "french": "Je ne me sens pas en sécurité", "german": "Ich fühle mich unsicher" },
-        { "id": 106, "english": "I need help", "spanish": "Necesito ayuda", "french": "J'ai besoin d'aide", "german": "Ich brauche Hilfe" },
-        { "id": 107, "english": "Is there a first aid kit?", "spanish": "¿Hay un botiquín?", "french": "Y a-t-il une trousse de secours ?", "german": "Gibt es einen Erste-Hilfe-Kasten?" },
-        { "id": 108, "english": "I can't breathe", "spanish": "No puedo respirar", "french": "Je ne peux pas respirer", "german": "Ich kann nicht atmen" },
-        { "id": 109, "english": "I need a translator", "spanish": "Necesito un traductor", "french": "J'ai besoin d'un traducteur", "german": "Ich brauche einen Übersetzer" },
-        { "id": 110, "english": "Is there a police station nearby?", "spanish": "¿Hay una comisaría cerca?", "french": "Y a-t-il un poste de police près d'ici ?", "german": "Gibt es eine Polizeistation in der Nähe?" },
-        { "id": 111, "english": "I need to report a crime", "spanish": "Necesito denunciar un delito", "french": "Je dois signaler un crime", "german": "Ich muss ein Verbrechen melden" },
-        { "id": 112, "english": "I lost my wallet", "spanish": "Perdí mi cartera", "french": "J'ai perdu mon portefeuille", "german": "Ich habe mein Portemonnaie verloren" },
-        { "id": 113, "english": "I was in an accident", "spanish": "Tuve un accidente", "french": "J'ai eu un accident", "german": "Ich hatte einen Unfall" },
-        { "id": 114, "english": "Is there a doctor who speaks English?", "spanish": "¿Hay un médico que hable inglés?", "french": "Y a-t-il un médecin qui parle anglais ?", "german": "Gibt es einen Arzt, der Englisch spricht?" },
-        { "id": 115, "english": "I need a dentist", "spanish": "Necesito un dentista", "french": "J'ai besoin d'un dentiste", "german": "Ich brauche einen Zahnarzt" },
-        { "id": 116, "english": "I need a prescription", "spanish": "Necesito una receta", "french": "J'ai besoin d'une ordonnance", "german": "Ich brauche ein Rezept" },
-        { "id": 117, "english": "I am diabetic", "spanish": "Soy diabético", "french": "Je suis diabétique", "german": "Ich bin Diabetiker" },
-        { "id": 118, "english": "I am pregnant", "spanish": "Estoy embarazada", "french": "Je suis enceinte", "german": "Ich bin schwanger" },
-        { "id": 119, "english": "I need a wheelchair", "spanish": "Necesito una silla de ruedas", "french": "J'ai besoin d'un fauteuil roulant", "german": "Ich brauche einen Rollstuhl" },
-        { "id": 120, "english": "Is there a hospital nearby?", "spanish": "¿Hay un hospital cerca?", "french": "Y a-t-il un hôpital près d'ici ?", "german": "Gibt es ein Krankenhaus in der Nähe?" }
+        {
+          "id": 91,
+          "english": "Help!",
+          "spanish": "¡Ayuda!",
+          "french": "À l'aide !",
+          "german": "Hilfe!",
+          "audioFile": "/audio/spanish/emergencieshealth/91_help.mp3"
+        },
+        {
+          "id": 92,
+          "english": "Call the police",
+          "spanish": "Llame a la policía",
+          "french": "Appelez la police",
+          "german": "Rufen Sie die Polizei",
+          "audioFile": "/audio/spanish/emergencieshealth/92_call_the_police.mp3"
+        },
+        {
+          "id": 93,
+          "english": "Call an ambulance",
+          "spanish": "Llame a una ambulancia",
+          "french": "Appelez une ambulance",
+          "german": "Rufen Sie einen Krankenwagen",
+          "audioFile": "/audio/spanish/emergencieshealth/93_call_an_ambulance.mp3"
+        },
+        {
+          "id": 94,
+          "english": "I need a doctor",
+          "spanish": "Necesito un médico",
+          "french": "J'ai besoin d'un médecin",
+          "german": "Ich brauche einen Arzt",
+          "audioFile": "/audio/spanish/emergencieshealth/94_i_need_a_doctor.mp3"
+        },
+        {
+          "id": 95,
+          "english": "It's an emergency",
+          "spanish": "Es una emergencia",
+          "french": "C'est une urgence",
+          "german": "Es ist ein Notfall",
+          "audioFile": "/audio/spanish/emergencieshealth/95_it_s_an_emergency.mp3"
+        },
+        {
+          "id": 96,
+          "english": "I feel sick",
+          "spanish": "Me siento mal",
+          "french": "Je me sens mal",
+          "german": "Mir ist schlecht",
+          "audioFile": "/audio/spanish/emergencieshealth/96_i_feel_sick.mp3"
+        },
+        {
+          "id": 97,
+          "english": "I have a fever",
+          "spanish": "Tengo fiebre",
+          "french": "J'ai de la fièvre",
+          "german": "Ich habe Fieber",
+          "audioFile": "/audio/spanish/emergencieshealth/97_i_have_a_fever.mp3"
+        },
+        {
+          "id": 98,
+          "english": "I have pain here",
+          "spanish": "Me duele aquí",
+          "french": "J'ai mal ici",
+          "german": "Es tut hier weh",
+          "audioFile": "/audio/spanish/emergencieshealth/98_i_have_pain_here.mp3"
+        },
+        {
+          "id": 99,
+          "english": "I am allergic to...",
+          "spanish": "Soy alérgico a...",
+          "french": "Je suis allergique à...",
+          "german": "Ich bin allergisch gegen...",
+          "audioFile": "/audio/spanish/emergencieshealth/99_i_am_allergic_to.mp3"
+        },
+        {
+          "id": 100,
+          "english": "I need medicine",
+          "spanish": "Necesito medicina",
+          "french": "J'ai besoin de médicaments",
+          "german": "Ich brauche Medizin",
+          "audioFile": "/audio/spanish/emergencieshealth/100_i_need_medicine.mp3"
+        },
+        {
+          "id": 101,
+          "english": "Where is the hospital?",
+          "spanish": "¿Dónde está el hospital?",
+          "french": "Où est l'hôpital ?",
+          "german": "Wo ist das Krankenhaus?",
+          "audioFile": "/audio/spanish/emergencieshealth/101_where_is_the_hospital.mp3"
+        },
+        {
+          "id": 102,
+          "english": "Where is the pharmacy?",
+          "spanish": "¿Dónde está la farmacia?",
+          "french": "Où est la pharmacie ?",
+          "german": "Wo ist die Apotheke?",
+          "audioFile": "/audio/spanish/emergencieshealth/102_where_is_the_pharmacy.mp3"
+        },
+        {
+          "id": 103,
+          "english": "I lost my passport",
+          "spanish": "Perdí mi pasaporte",
+          "french": "J'ai perdu mon passeport",
+          "german": "Ich habe meinen Pass verloren",
+          "audioFile": "/audio/spanish/emergencieshealth/103_i_lost_my_passport.mp3"
+        },
+        {
+          "id": 104,
+          "english": "My phone was stolen",
+          "spanish": "Me robaron el móvil",
+          "french": "On m'a volé mon téléphone",
+          "german": "Mein Handy wurde gestohlen",
+          "audioFile": "/audio/spanish/emergencieshealth/104_my_phone_was_stolen.mp3"
+        },
+        {
+          "id": 105,
+          "english": "I don't feel safe",
+          "spanish": "No me siento seguro",
+          "french": "Je ne me sens pas en sécurité",
+          "german": "Ich fühle mich unsicher",
+          "audioFile": "/audio/spanish/emergencieshealth/105_i_don_t_feel_safe.mp3"
+        },
+        {
+          "id": 106,
+          "english": "I need help",
+          "spanish": "Necesito ayuda",
+          "french": "J'ai besoin d'aide",
+          "german": "Ich brauche Hilfe",
+          "audioFile": "/audio/spanish/emergencieshealth/106_i_need_help.mp3"
+        },
+        {
+          "id": 107,
+          "english": "Is there a first aid kit?",
+          "spanish": "¿Hay un botiquín?",
+          "french": "Y a-t-il une trousse de secours ?",
+          "german": "Gibt es einen Erste-Hilfe-Kasten?",
+          "audioFile": "/audio/spanish/emergencieshealth/107_is_there_a_first_aid_kit.mp3"
+        },
+        {
+          "id": 108,
+          "english": "I can't breathe",
+          "spanish": "No puedo respirar",
+          "french": "Je ne peux pas respirer",
+          "german": "Ich kann nicht atmen",
+          "audioFile": "/audio/spanish/emergencieshealth/108_i_can_t_breathe.mp3"
+        },
+        {
+          "id": 109,
+          "english": "I need a translator",
+          "spanish": "Necesito un traductor",
+          "french": "J'ai besoin d'un traducteur",
+          "german": "Ich brauche einen Übersetzer",
+          "audioFile": "/audio/spanish/emergencieshealth/109_i_need_a_translator.mp3"
+        },
+        {
+          "id": 110,
+          "english": "Is there a police station nearby?",
+          "spanish": "¿Hay una comisaría cerca?",
+          "french": "Y a-t-il un poste de police près d'ici ?",
+          "german": "Gibt es eine Polizeistation in der Nähe?",
+          "audioFile": "/audio/spanish/emergencieshealth/110_is_there_a_police_station_nearby.mp3"
+        },
+        {
+          "id": 111,
+          "english": "I need to report a crime",
+          "spanish": "Necesito denunciar un delito",
+          "french": "Je dois signaler un crime",
+          "german": "Ich muss ein Verbrechen melden",
+          "audioFile": "/audio/spanish/emergencieshealth/111_i_need_to_report_a_crime.mp3"
+        },
+        {
+          "id": 112,
+          "english": "I lost my wallet",
+          "spanish": "Perdí mi cartera",
+          "french": "J'ai perdu mon portefeuille",
+          "german": "Ich habe mein Portemonnaie verloren",
+          "audioFile": "/audio/spanish/emergencieshealth/112_i_lost_my_wallet.mp3"
+        },
+        {
+          "id": 113,
+          "english": "I was in an accident",
+          "spanish": "Tuve un accidente",
+          "french": "J'ai eu un accident",
+          "german": "Ich hatte einen Unfall",
+          "audioFile": "/audio/spanish/emergencieshealth/113_i_was_in_an_accident.mp3"
+        },
+        {
+          "id": 114,
+          "english": "Is there a doctor who speaks English?",
+          "spanish": "¿Hay un médico que hable inglés?",
+          "french": "Y a-t-il un médecin qui parle anglais ?",
+          "german": "Gibt es einen Arzt, der Englisch spricht?",
+          "audioFile": "/audio/spanish/emergencieshealth/114_is_there_a_doctor_who_speaks_english.mp3"
+        },
+        {
+          "id": 115,
+          "english": "I need a dentist",
+          "spanish": "Necesito un dentista",
+          "french": "J'ai besoin d'un dentiste",
+          "german": "Ich brauche einen Zahnarzt",
+          "audioFile": "/audio/spanish/emergencieshealth/115_i_need_a_dentist.mp3"
+        },
+        {
+          "id": 116,
+          "english": "I need a prescription",
+          "spanish": "Necesito una receta",
+          "french": "J'ai besoin d'une ordonnance",
+          "german": "Ich brauche ein Rezept",
+          "audioFile": "/audio/spanish/emergencieshealth/116_i_need_a_prescription.mp3"
+        },
+        {
+          "id": 117,
+          "english": "I am diabetic",
+          "spanish": "Soy diabético",
+          "french": "Je suis diabétique",
+          "german": "Ich bin Diabetiker",
+          "audioFile": "/audio/spanish/emergencieshealth/117_i_am_diabetic.mp3"
+        },
+        {
+          "id": 118,
+          "english": "I am pregnant",
+          "spanish": "Estoy embarazada",
+          "french": "Je suis enceinte",
+          "german": "Ich bin schwanger",
+          "audioFile": "/audio/spanish/emergencieshealth/118_i_am_pregnant.mp3"
+        },
+        {
+          "id": 119,
+          "english": "I need a wheelchair",
+          "spanish": "Necesito una silla de ruedas",
+          "french": "J'ai besoin d'un fauteuil roulant",
+          "german": "Ich brauche einen Rollstuhl",
+          "audioFile": "/audio/spanish/emergencieshealth/119_i_need_a_wheelchair.mp3"
+        },
+        {
+          "id": 120,
+          "english": "Is there a hospital nearby?",
+          "spanish": "¿Hay un hospital cerca?",
+          "french": "Y a-t-il un hôpital près d'ici ?",
+          "german": "Gibt es ein Krankenhaus in der Nähe?",
+          "audioFile": "/audio/spanish/emergencieshealth/120_is_there_a_hospital_nearby.mp3"
+        }
       ]
     },
     {
       "name": "Shopping & Money",
       "phrases": [
-        { "id": 121, "english": "How much does this cost?", "spanish": "¿Cuánto cuesta esto?", "french": "Combien ça coûte ?", "german": "Wie viel kostet das?" },
-        { "id": 122, "english": "Can I pay by card?", "spanish": "¿Puedo pagar con tarjeta?", "french": "Puis-je payer par carte ?", "german": "Kann ich mit Karte zahlen?" },
-        { "id": 123, "english": "Do you accept cash?", "spanish": "¿Acepta efectivo?", "french": "Acceptez-vous l'argent liquide ?", "german": "Akzeptieren Sie Bargeld?" },
-        { "id": 124, "english": "Do you accept credit cards?", "spanish": "¿Acepta tarjetas de crédito?", "french": "Acceptez-vous les cartes de crédit ?", "german": "Akzeptieren Sie Kreditkarten?" },
-        { "id": 125, "english": "Where is the nearest ATM?", "spanish": "¿Dónde está el cajero más cercano?", "french": "Où est le distributeur le plus proche ?", "german": "Wo ist der nächste Geldautomat?" },
-        { "id": 126, "english": "Can I get a receipt?", "spanish": "¿Puedo obtener un recibo?", "french": "Puis-je avoir un reçu ?", "german": "Kann ich eine Quittung bekommen?" },
-        { "id": 127, "english": "Is there a discount?", "spanish": "¿Hay descuento?", "french": "Y a-t-il une réduction ?", "german": "Gibt es einen Rabatt?" },
-        { "id": 128, "english": "Can I try this on?", "spanish": "¿Puedo probar esto?", "french": "Puis-je essayer ceci ?", "german": "Kann ich das anprobieren?" },
-        { "id": 129, "english": "Do you have this in another size?", "spanish": "¿Tiene esto en otra talla?", "french": "Avez-vous ceci dans une autre taille ?", "german": "Haben Sie das in einer anderen Größe?" },
-        { "id": 130, "english": "Do you have this in another color?", "spanish": "¿Tiene esto en otro color?", "french": "Avez-vous ceci dans une autre couleur ?", "german": "Haben Sie das in einer anderen Farbe?" },
-        { "id": 131, "english": "Where is the fitting room?", "spanish": "¿Dónde está el probador?", "french": "Où est la cabine d'essayage ?", "german": "Wo ist die Umkleidekabine?" },
-        { "id": 132, "english": "Can I return this?", "spanish": "¿Puedo devolver esto?", "french": "Puis-je retourner ceci ?", "german": "Kann ich das zurückgeben?" },
-        { "id": 133, "english": "Is it on sale?", "spanish": "¿Está en oferta?", "french": "Est-ce en solde ?", "german": "Ist das im Angebot?" },
-        { "id": 134, "english": "Can you help me?", "spanish": "¿Puede ayudarme?", "french": "Pouvez-vous m'aider ?", "german": "Können Sie mir helfen?" },
-        { "id": 135, "english": "I'm just looking", "spanish": "Solo estoy mirando", "french": "Je regarde seulement", "german": "Ich schaue nur" },
-        { "id": 136, "english": "Too expensive", "spanish": "Demasiado caro", "french": "Trop cher", "german": "Zu teuer" },
-        { "id": 137, "english": "Do you have a bag?", "spanish": "¿Tiene una bolsa?", "french": "Avez-vous un sac ?", "german": "Haben Sie eine Tüte?" },
-        { "id": 138, "english": "Can I pay in cash?", "spanish": "¿Puedo pagar en efectivo?", "french": "Puis-je payer en espèces ?", "german": "Kann ich bar bezahlen?" },
-        { "id": 139, "english": "Is there a warranty?", "spanish": "¿Hay garantía?", "french": "Y a-t-il une garantie ?", "german": "Gibt es eine Garantie?" },
-        { "id": 140, "english": "Can I order this online?", "spanish": "¿Puedo pedir esto en línea?", "french": "Puis-je commander ceci en ligne ?", "german": "Kann ich das online bestellen?" },
-        { "id": 141, "english": "Where is the market?", "spanish": "¿Dónde está el mercado?", "french": "Où est le marché ?", "german": "Wo ist der Markt?" },
-        { "id": 142, "english": "Is this fresh?", "spanish": "¿Esto es fresco?", "french": "C'est frais ?", "german": "Ist das frisch?" },
-        { "id": 143, "english": "Can I have a sample?", "spanish": "¿Puedo probar una muestra?", "french": "Puis-je avoir un échantillon ?", "german": "Kann ich eine Probe haben?" },
-        { "id": 144, "english": "Do you have change?", "spanish": "¿Tiene cambio?", "french": "Avez-vous de la monnaie ?", "german": "Haben Sie Wechselgeld?" },
-        { "id": 145, "english": "Can I get a gift receipt?", "spanish": "¿Puedo obtener un recibo de regalo?", "french": "Puis-je avoir un reçu cadeau ?", "german": "Kann ich einen Geschenkbeleg bekommen?" },
-        { "id": 146, "english": "Is this handmade?", "spanish": "¿Esto es hecho a mano?", "french": "C'est fait main ?", "german": "Ist das handgemacht?" },
-        { "id": 147, "english": "Do you deliver?", "spanish": "¿Hace entregas?", "french": "Faites-vous des livraisons ?", "german": "Liefern Sie?" },
-        { "id": 148, "english": "Can I get a refund?", "spanish": "¿Puedo obtener un reembolso?", "french": "Puis-je obtenir un remboursement ?", "german": "Kann ich eine Rückerstattung bekommen?" },
-        { "id": 149, "english": "Is this the final price?", "spanish": "¿Es este el precio final?", "french": "C'est le prix final ?", "german": "Ist das der Endpreis?" },
-        { "id": 150, "english": "Can I pay later?", "spanish": "¿Puedo pagar después?", "french": "Puis-je payer plus tard ?", "german": "Kann ich später bezahlen?" }
+        {
+          "id": 121,
+          "english": "How much does this cost?",
+          "spanish": "¿Cuánto cuesta esto?",
+          "french": "Combien ça coûte ?",
+          "german": "Wie viel kostet das?",
+          "audioFile": "/audio/spanish/shoppingmoney/121_how_much_does_this_cost.mp3"
+        },
+        {
+          "id": 122,
+          "english": "Can I pay by card?",
+          "spanish": "¿Puedo pagar con tarjeta?",
+          "french": "Puis-je payer par carte ?",
+          "german": "Kann ich mit Karte zahlen?",
+          "audioFile": "/audio/spanish/shoppingmoney/122_can_i_pay_by_card.mp3"
+        },
+        {
+          "id": 123,
+          "english": "Do you accept cash?",
+          "spanish": "¿Acepta efectivo?",
+          "french": "Acceptez-vous l'argent liquide ?",
+          "german": "Akzeptieren Sie Bargeld?",
+          "audioFile": "/audio/spanish/shoppingmoney/123_do_you_accept_cash.mp3"
+        },
+        {
+          "id": 124,
+          "english": "Do you accept credit cards?",
+          "spanish": "¿Acepta tarjetas de crédito?",
+          "french": "Acceptez-vous les cartes de crédit ?",
+          "german": "Akzeptieren Sie Kreditkarten?",
+          "audioFile": "/audio/spanish/shoppingmoney/124_do_you_accept_credit_cards.mp3"
+        },
+        {
+          "id": 125,
+          "english": "Where is the nearest ATM?",
+          "spanish": "¿Dónde está el cajero más cercano?",
+          "french": "Où est le distributeur le plus proche ?",
+          "german": "Wo ist der nächste Geldautomat?",
+          "audioFile": "/audio/spanish/shoppingmoney/125_where_is_the_nearest_atm.mp3"
+        },
+        {
+          "id": 126,
+          "english": "Can I get a receipt?",
+          "spanish": "¿Puedo obtener un recibo?",
+          "french": "Puis-je avoir un reçu ?",
+          "german": "Kann ich eine Quittung bekommen?",
+          "audioFile": "/audio/spanish/shoppingmoney/126_can_i_get_a_receipt.mp3"
+        },
+        {
+          "id": 127,
+          "english": "Is there a discount?",
+          "spanish": "¿Hay descuento?",
+          "french": "Y a-t-il une réduction ?",
+          "german": "Gibt es einen Rabatt?",
+          "audioFile": "/audio/spanish/shoppingmoney/127_is_there_a_discount.mp3"
+        },
+        {
+          "id": 128,
+          "english": "Can I try this on?",
+          "spanish": "¿Puedo probar esto?",
+          "french": "Puis-je essayer ceci ?",
+          "german": "Kann ich das anprobieren?",
+          "audioFile": "/audio/spanish/shoppingmoney/128_can_i_try_this_on.mp3"
+        },
+        {
+          "id": 129,
+          "english": "Do you have this in another size?",
+          "spanish": "¿Tiene esto en otra talla?",
+          "french": "Avez-vous ceci dans une autre taille ?",
+          "german": "Haben Sie das in einer anderen Größe?",
+          "audioFile": "/audio/spanish/shoppingmoney/129_do_you_have_this_in_another_size.mp3"
+        },
+        {
+          "id": 130,
+          "english": "Do you have this in another color?",
+          "spanish": "¿Tiene esto en otro color?",
+          "french": "Avez-vous ceci dans une autre couleur ?",
+          "german": "Haben Sie das in einer anderen Farbe?",
+          "audioFile": "/audio/spanish/shoppingmoney/130_do_you_have_this_in_another_color.mp3"
+        },
+        {
+          "id": 131,
+          "english": "Where is the fitting room?",
+          "spanish": "¿Dónde está el probador?",
+          "french": "Où est la cabine d'essayage ?",
+          "german": "Wo ist die Umkleidekabine?",
+          "audioFile": "/audio/spanish/shoppingmoney/131_where_is_the_fitting_room.mp3"
+        },
+        {
+          "id": 132,
+          "english": "Can I return this?",
+          "spanish": "¿Puedo devolver esto?",
+          "french": "Puis-je retourner ceci ?",
+          "german": "Kann ich das zurückgeben?",
+          "audioFile": "/audio/spanish/shoppingmoney/132_can_i_return_this.mp3"
+        },
+        {
+          "id": 133,
+          "english": "Is it on sale?",
+          "spanish": "¿Está en oferta?",
+          "french": "Est-ce en solde ?",
+          "german": "Ist das im Angebot?",
+          "audioFile": "/audio/spanish/shoppingmoney/133_is_it_on_sale.mp3"
+        },
+        {
+          "id": 134,
+          "english": "Can you help me?",
+          "spanish": "¿Puede ayudarme?",
+          "french": "Pouvez-vous m'aider ?",
+          "german": "Können Sie mir helfen?",
+          "audioFile": "/audio/spanish/shoppingmoney/134_can_you_help_me.mp3"
+        },
+        {
+          "id": 135,
+          "english": "I'm just looking",
+          "spanish": "Solo estoy mirando",
+          "french": "Je regarde seulement",
+          "german": "Ich schaue nur",
+          "audioFile": "/audio/spanish/shoppingmoney/135_i_m_just_looking.mp3"
+        },
+        {
+          "id": 136,
+          "english": "Too expensive",
+          "spanish": "Demasiado caro",
+          "french": "Trop cher",
+          "german": "Zu teuer",
+          "audioFile": "/audio/spanish/shoppingmoney/136_too_expensive.mp3"
+        },
+        {
+          "id": 137,
+          "english": "Do you have a bag?",
+          "spanish": "¿Tiene una bolsa?",
+          "french": "Avez-vous un sac ?",
+          "german": "Haben Sie eine Tüte?",
+          "audioFile": "/audio/spanish/shoppingmoney/137_do_you_have_a_bag.mp3"
+        },
+        {
+          "id": 138,
+          "english": "Can I pay in cash?",
+          "spanish": "¿Puedo pagar en efectivo?",
+          "french": "Puis-je payer en espèces ?",
+          "german": "Kann ich bar bezahlen?",
+          "audioFile": "/audio/spanish/shoppingmoney/138_can_i_pay_in_cash.mp3"
+        },
+        {
+          "id": 139,
+          "english": "Is there a warranty?",
+          "spanish": "¿Hay garantía?",
+          "french": "Y a-t-il une garantie ?",
+          "german": "Gibt es eine Garantie?",
+          "audioFile": "/audio/spanish/shoppingmoney/139_is_there_a_warranty.mp3"
+        },
+        {
+          "id": 140,
+          "english": "Can I order this online?",
+          "spanish": "¿Puedo pedir esto en línea?",
+          "french": "Puis-je commander ceci en ligne ?",
+          "german": "Kann ich das online bestellen?",
+          "audioFile": "/audio/spanish/shoppingmoney/140_can_i_order_this_online.mp3"
+        },
+        {
+          "id": 141,
+          "english": "Where is the market?",
+          "spanish": "¿Dónde está el mercado?",
+          "french": "Où est le marché ?",
+          "german": "Wo ist der Markt?",
+          "audioFile": "/audio/spanish/shoppingmoney/141_where_is_the_market.mp3"
+        },
+        {
+          "id": 142,
+          "english": "Is this fresh?",
+          "spanish": "¿Esto es fresco?",
+          "french": "C'est frais ?",
+          "german": "Ist das frisch?",
+          "audioFile": "/audio/spanish/shoppingmoney/142_is_this_fresh.mp3"
+        },
+        {
+          "id": 143,
+          "english": "Can I have a sample?",
+          "spanish": "¿Puedo probar una muestra?",
+          "french": "Puis-je avoir un échantillon ?",
+          "german": "Kann ich eine Probe haben?",
+          "audioFile": "/audio/spanish/shoppingmoney/143_can_i_have_a_sample.mp3"
+        },
+        {
+          "id": 144,
+          "english": "Do you have change?",
+          "spanish": "¿Tiene cambio?",
+          "french": "Avez-vous de la monnaie ?",
+          "german": "Haben Sie Wechselgeld?",
+          "audioFile": "/audio/spanish/shoppingmoney/144_do_you_have_change.mp3"
+        },
+        {
+          "id": 145,
+          "english": "Can I get a gift receipt?",
+          "spanish": "¿Puedo obtener un recibo de regalo?",
+          "french": "Puis-je avoir un reçu cadeau ?",
+          "german": "Kann ich einen Geschenkbeleg bekommen?",
+          "audioFile": "/audio/spanish/shoppingmoney/145_can_i_get_a_gift_receipt.mp3"
+        },
+        {
+          "id": 146,
+          "english": "Is this handmade?",
+          "spanish": "¿Esto es hecho a mano?",
+          "french": "C'est fait main ?",
+          "german": "Ist das handgemacht?",
+          "audioFile": "/audio/spanish/shoppingmoney/146_is_this_handmade.mp3"
+        },
+        {
+          "id": 147,
+          "english": "Do you deliver?",
+          "spanish": "¿Hace entregas?",
+          "french": "Faites-vous des livraisons ?",
+          "german": "Liefern Sie?",
+          "audioFile": "/audio/spanish/shoppingmoney/147_do_you_deliver.mp3"
+        },
+        {
+          "id": 148,
+          "english": "Can I get a refund?",
+          "spanish": "¿Puedo obtener un reembolso?",
+          "french": "Puis-je obtenir un remboursement ?",
+          "german": "Kann ich eine Rückerstattung bekommen?",
+          "audioFile": "/audio/spanish/shoppingmoney/148_can_i_get_a_refund.mp3"
+        },
+        {
+          "id": 149,
+          "english": "Is this the final price?",
+          "spanish": "¿Es este el precio final?",
+          "french": "C'est le prix final ?",
+          "german": "Ist das der Endpreis?",
+          "audioFile": "/audio/spanish/shoppingmoney/149_is_this_the_final_price.mp3"
+        },
+        {
+          "id": 150,
+          "english": "Can I pay later?",
+          "spanish": "¿Puedo pagar después?",
+          "french": "Puis-je payer plus tard ?",
+          "german": "Kann ich später bezahlen?",
+          "audioFile": "/audio/spanish/shoppingmoney/150_can_i_pay_later.mp3"
+        }
       ]
     },
     {
       "name": "Social & Daily Life",
       "phrases": [
-        { "id": 151, "english": "How are you today?", "spanish": "¿Cómo estás hoy?", "french": "Comment vas-tu aujourd'hui ?", "german": "Wie geht es dir heute?" },
-        { "id": 152, "english": "What are you doing?", "spanish": "¿Qué haces?", "french": "Que fais-tu ?", "german": "Was machst du?" },
-        { "id": 153, "english": "Do you have plans?", "spanish": "¿Tienes planes?", "french": "As-tu des plans ?", "german": "Hast du Pläne?" },
-        { "id": 154, "english": "Let's go out", "spanish": "Vamos a salir", "french": "Sortons", "german": "Lass uns ausgehen" },
-        { "id": 155, "english": "What time is it?", "spanish": "¿Qué hora es?", "french": "Quelle heure est-il ?", "german": "Wie spät ist es?" },
-        { "id": 156, "english": "See you soon", "spanish": "Hasta pronto", "french": "À bientôt", "german": "Bis bald" },
-        { "id": 157, "english": "Have a good day", "spanish": "Que tengas un buen día", "french": "Bonne journée", "german": "Schönen Tag noch" },
-        { "id": 158, "english": "Have a good night", "spanish": "Que tengas buenas noches", "french": "Bonne nuit", "german": "Gute Nacht" },
-        { "id": 159, "english": "What do you like to do?", "spanish": "¿Qué te gusta hacer?", "french": "Qu'aimes-tu faire ?", "german": "Was machst du gerne?" },
-        { "id": 160, "english": "I like to read", "spanish": "Me gusta leer", "french": "J'aime lire", "german": "Ich lese gerne" },
-        { "id": 161, "english": "I like to travel", "spanish": "Me gusta viajar", "french": "J'aime voyager", "german": "Ich reise gerne" },
-        { "id": 162, "english": "I like music", "spanish": "Me gusta la música", "french": "J'aime la musique", "german": "Ich mag Musik" },
-        { "id": 163, "english": "Do you play sports?", "spanish": "¿Practicas deportes?", "french": "Fais-tu du sport ?", "german": "Treibst du Sport?" },
-        { "id": 164, "english": "What is your favorite food?", "spanish": "¿Cuál es tu comida favorita?", "french": "Quel est ton plat préféré ?", "german": "Was ist dein Lieblingsessen?" },
-        { "id": 165, "english": "Do you have pets?", "spanish": "¿Tienes mascotas?", "french": "As-tu des animaux ?", "german": "Hast du Haustiere?" },
-        { "id": 166, "english": "I have a dog", "spanish": "Tengo un perro", "french": "J'ai un chien", "german": "Ich habe einen Hund" },
-        { "id": 167, "english": "I have a cat", "spanish": "Tengo un gato", "french": "J'ai un chat", "german": "Ich habe eine Katze" },
-        { "id": 168, "english": "Where do you live?", "spanish": "¿Dónde vives?", "french": "Où habites-tu ?", "german": "Wo wohnst du?" },
-        { "id": 169, "english": "I live in...", "spanish": "Vivo en...", "french": "J'habite à...", "german": "Ich wohne in..." },
-        { "id": 170, "english": "What is your job?", "spanish": "¿A qué te dedicas?", "french": "Quel est ton métier ?", "german": "Was machst du beruflich?" },
-        { "id": 171, "english": "I am a student", "spanish": "Soy estudiante", "french": "Je suis étudiant", "german": "Ich bin Student" },
-        { "id": 172, "english": "I am a teacher", "spanish": "Soy profesor", "french": "Je suis professeur", "german": "Ich bin Lehrer" },
-        { "id": 173, "english": "I am on vacation", "spanish": "Estoy de vacaciones", "french": "Je suis en vacances", "german": "Ich bin im Urlaub" },
-        { "id": 174, "english": "I am here for work", "spanish": "Estoy aquí por trabajo", "french": "Je suis ici pour le travail", "german": "Ich bin geschäftlich hier" },
-        { "id": 175, "english": "What is your phone number?", "spanish": "¿Cuál es tu número de teléfono?", "french": "Quel est ton numéro de téléphone ?", "german": "Wie ist deine Telefonnummer?" },
-        { "id": 176, "english": "Can I have your email?", "spanish": "¿Puedo tener tu correo electrónico?", "french": "Puis-je avoir ton e-mail ?", "german": "Kann ich deine E-Mail haben?" },
-        { "id": 177, "english": "Let's keep in touch", "spanish": "Mantengámonos en contacto", "french": "Restons en contact", "german": "Lass uns in Kontakt bleiben" },
-        { "id": 178, "english": "See you tomorrow", "spanish": "Hasta mañana", "french": "À demain", "german": "Bis morgen" },
-        { "id": 179, "english": "Have a nice weekend", "spanish": "Que tengas un buen fin de semana", "french": "Bon week-end", "german": "Schönes Wochenende" },
-        { "id": 180, "english": "Enjoy your day", "spanish": "Disfruta tu día", "french": "Profite de ta journée", "german": "Genieß deinen Tag" }
+        {
+          "id": 151,
+          "english": "How are you today?",
+          "spanish": "¿Cómo estás hoy?",
+          "french": "Comment vas-tu aujourd'hui ?",
+          "german": "Wie geht es dir heute?",
+          "audioFile": "/audio/spanish/socialdailylife/151_how_are_you_today.mp3"
+        },
+        {
+          "id": 152,
+          "english": "What are you doing?",
+          "spanish": "¿Qué haces?",
+          "french": "Que fais-tu ?",
+          "german": "Was machst du?",
+          "audioFile": "/audio/spanish/socialdailylife/152_what_are_you_doing.mp3"
+        },
+        {
+          "id": 153,
+          "english": "Do you have plans?",
+          "spanish": "¿Tienes planes?",
+          "french": "As-tu des plans ?",
+          "german": "Hast du Pläne?",
+          "audioFile": "/audio/spanish/socialdailylife/153_do_you_have_plans.mp3"
+        },
+        {
+          "id": 154,
+          "english": "Let's go out",
+          "spanish": "Vamos a salir",
+          "french": "Sortons",
+          "german": "Lass uns ausgehen",
+          "audioFile": "/audio/spanish/socialdailylife/154_let_s_go_out.mp3"
+        },
+        {
+          "id": 155,
+          "english": "What time is it?",
+          "spanish": "¿Qué hora es?",
+          "french": "Quelle heure est-il ?",
+          "german": "Wie spät ist es?",
+          "audioFile": "/audio/spanish/socialdailylife/155_what_time_is_it.mp3"
+        },
+        {
+          "id": 156,
+          "english": "See you soon",
+          "spanish": "Hasta pronto",
+          "french": "À bientôt",
+          "german": "Bis bald",
+          "audioFile": "/audio/spanish/socialdailylife/156_see_you_soon.mp3"
+        },
+        {
+          "id": 157,
+          "english": "Have a good day",
+          "spanish": "Que tengas un buen día",
+          "french": "Bonne journée",
+          "german": "Schönen Tag noch",
+          "audioFile": "/audio/spanish/socialdailylife/157_have_a_good_day.mp3"
+        },
+        {
+          "id": 158,
+          "english": "Have a good night",
+          "spanish": "Que tengas buenas noches",
+          "french": "Bonne nuit",
+          "german": "Gute Nacht",
+          "audioFile": "/audio/spanish/socialdailylife/158_have_a_good_night.mp3"
+        },
+        {
+          "id": 159,
+          "english": "What do you like to do?",
+          "spanish": "¿Qué te gusta hacer?",
+          "french": "Qu'aimes-tu faire ?",
+          "german": "Was machst du gerne?",
+          "audioFile": "/audio/spanish/socialdailylife/159_what_do_you_like_to_do.mp3"
+        },
+        {
+          "id": 160,
+          "english": "I like to read",
+          "spanish": "Me gusta leer",
+          "french": "J'aime lire",
+          "german": "Ich lese gerne",
+          "audioFile": "/audio/spanish/socialdailylife/160_i_like_to_read.mp3"
+        },
+        {
+          "id": 161,
+          "english": "I like to travel",
+          "spanish": "Me gusta viajar",
+          "french": "J'aime voyager",
+          "german": "Ich reise gerne",
+          "audioFile": "/audio/spanish/socialdailylife/161_i_like_to_travel.mp3"
+        },
+        {
+          "id": 162,
+          "english": "I like music",
+          "spanish": "Me gusta la música",
+          "french": "J'aime la musique",
+          "german": "Ich mag Musik",
+          "audioFile": "/audio/spanish/socialdailylife/162_i_like_music.mp3"
+        },
+        {
+          "id": 163,
+          "english": "Do you play sports?",
+          "spanish": "¿Practicas deportes?",
+          "french": "Fais-tu du sport ?",
+          "german": "Treibst du Sport?",
+          "audioFile": "/audio/spanish/socialdailylife/163_do_you_play_sports.mp3"
+        },
+        {
+          "id": 164,
+          "english": "What is your favorite food?",
+          "spanish": "¿Cuál es tu comida favorita?",
+          "french": "Quel est ton plat préféré ?",
+          "german": "Was ist dein Lieblingsessen?",
+          "audioFile": "/audio/spanish/socialdailylife/164_what_is_your_favorite_food.mp3"
+        },
+        {
+          "id": 165,
+          "english": "Do you have pets?",
+          "spanish": "¿Tienes mascotas?",
+          "french": "As-tu des animaux ?",
+          "german": "Hast du Haustiere?",
+          "audioFile": "/audio/spanish/socialdailylife/165_do_you_have_pets.mp3"
+        },
+        {
+          "id": 166,
+          "english": "I have a dog",
+          "spanish": "Tengo un perro",
+          "french": "J'ai un chien",
+          "german": "Ich habe einen Hund",
+          "audioFile": "/audio/spanish/socialdailylife/166_i_have_a_dog.mp3"
+        },
+        {
+          "id": 167,
+          "english": "I have a cat",
+          "spanish": "Tengo un gato",
+          "french": "J'ai un chat",
+          "german": "Ich habe eine Katze",
+          "audioFile": "/audio/spanish/socialdailylife/167_i_have_a_cat.mp3"
+        },
+        {
+          "id": 168,
+          "english": "Where do you live?",
+          "spanish": "¿Dónde vives?",
+          "french": "Où habites-tu ?",
+          "german": "Wo wohnst du?",
+          "audioFile": "/audio/spanish/socialdailylife/168_where_do_you_live.mp3"
+        },
+        {
+          "id": 169,
+          "english": "I live in...",
+          "spanish": "Vivo en...",
+          "french": "J'habite à...",
+          "german": "Ich wohne in...",
+          "audioFile": "/audio/spanish/socialdailylife/169_i_live_in.mp3"
+        },
+        {
+          "id": 170,
+          "english": "What is your job?",
+          "spanish": "¿A qué te dedicas?",
+          "french": "Quel est ton métier ?",
+          "german": "Was machst du beruflich?",
+          "audioFile": "/audio/spanish/socialdailylife/170_what_is_your_job.mp3"
+        },
+        {
+          "id": 171,
+          "english": "I am a student",
+          "spanish": "Soy estudiante",
+          "french": "Je suis étudiant",
+          "german": "Ich bin Student",
+          "audioFile": "/audio/spanish/socialdailylife/171_i_am_a_student.mp3"
+        },
+        {
+          "id": 172,
+          "english": "I am a teacher",
+          "spanish": "Soy profesor",
+          "french": "Je suis professeur",
+          "german": "Ich bin Lehrer",
+          "audioFile": "/audio/spanish/socialdailylife/172_i_am_a_teacher.mp3"
+        },
+        {
+          "id": 173,
+          "english": "I am on vacation",
+          "spanish": "Estoy de vacaciones",
+          "french": "Je suis en vacances",
+          "german": "Ich bin im Urlaub",
+          "audioFile": "/audio/spanish/socialdailylife/173_i_am_on_vacation.mp3"
+        },
+        {
+          "id": 174,
+          "english": "I am here for work",
+          "spanish": "Estoy aquí por trabajo",
+          "french": "Je suis ici pour le travail",
+          "german": "Ich bin geschäftlich hier",
+          "audioFile": "/audio/spanish/socialdailylife/174_i_am_here_for_work.mp3"
+        },
+        {
+          "id": 175,
+          "english": "What is your phone number?",
+          "spanish": "¿Cuál es tu número de teléfono?",
+          "french": "Quel est ton numéro de téléphone ?",
+          "german": "Wie ist deine Telefonnummer?",
+          "audioFile": "/audio/spanish/socialdailylife/175_what_is_your_phone_number.mp3"
+        },
+        {
+          "id": 176,
+          "english": "Can I have your email?",
+          "spanish": "¿Puedo tener tu correo electrónico?",
+          "french": "Puis-je avoir ton e-mail ?",
+          "german": "Kann ich deine E-Mail haben?",
+          "audioFile": "/audio/spanish/socialdailylife/176_can_i_have_your_email.mp3"
+        },
+        {
+          "id": 177,
+          "english": "Let's keep in touch",
+          "spanish": "Mantengámonos en contacto",
+          "french": "Restons en contact",
+          "german": "Lass uns in Kontakt bleiben",
+          "audioFile": "/audio/spanish/socialdailylife/177_let_s_keep_in_touch.mp3"
+        },
+        {
+          "id": 178,
+          "english": "See you tomorrow",
+          "spanish": "Hasta mañana",
+          "french": "À demain",
+          "german": "Bis morgen",
+          "audioFile": "/audio/spanish/socialdailylife/178_see_you_tomorrow.mp3"
+        },
+        {
+          "id": 179,
+          "english": "Have a nice weekend",
+          "spanish": "Que tengas un buen fin de semana",
+          "french": "Bon week-end",
+          "german": "Schönes Wochenende",
+          "audioFile": "/audio/spanish/socialdailylife/179_have_a_nice_weekend.mp3"
+        },
+        {
+          "id": 180,
+          "english": "Enjoy your day",
+          "spanish": "Disfruta tu día",
+          "french": "Profite de ta journée",
+          "german": "Genieß deinen Tag",
+          "audioFile": "/audio/spanish/socialdailylife/180_enjoy_your_day.mp3"
+        }
       ]
     }
   ]
