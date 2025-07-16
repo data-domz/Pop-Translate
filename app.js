@@ -215,10 +215,21 @@ class LanguageLearningApp {
         this.recognition.onstart = () => {
             this.speechStartTime = Date.now();
             this.interimResults = [];
+            // Start a timeout to auto-stop after 5 seconds
+            if (this.recognitionTimeout) clearTimeout(this.recognitionTimeout);
+            this.recognitionTimeout = setTimeout(() => {
+                if (this.isRecording) this.recognition.stop();
+            }, 5000);
+        };
+        
+        this.recognition.onspeechend = () => {
+            // Auto-stop when user stops speaking
+            if (this.isRecording) this.recognition.stop();
         };
         
         this.recognition.onend = () => {
             this.speechEndTime = Date.now();
+            if (this.recognitionTimeout) clearTimeout(this.recognitionTimeout);
             this.stopRecording();
         };
     }
